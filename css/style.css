@@ -1,0 +1,3022 @@
+/*----------DOCUMENT RESET----------*/
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: rgba(36, 83, 192, 0.1);
+}
+/*------------------------------*/
+/*----------VARIABLES----------*/
+/*------------------------------*/
+/*----------IMPORTS----------*/
+/*----------LOGIN----------*/
+section.login {
+  background: linear-gradient(to bottom right, #f5f5f5, #dcdcdc);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+section.login #logo {
+  color: #337ab7;
+  margin-bottom: 20px;
+  max-width: 100%;
+  max-height: 80px;
+}
+section.login form {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+}
+section.login form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #337ab7;
+}
+section.login form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  margin-right: 0;
+}
+section.login form input:focus {
+  outline: none;
+  border-color: #337ab7;
+}
+section.login form .login-error {
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+section.login form .center {
+  text-align: center;
+  margin-bottom: 15px;
+}
+section.login form .center input[type="submit"] {
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+section.login form .center input[type="submit"]:hover {
+  background-color: #285f8f;
+}
+section.login form .center .checkbox {
+  display: inline-block;
+  margin-right: 5px;
+}
+/*------------------------------*/
+/*----------HEADER----------*/
+header {
+  width: 100%;
+  height: 40px;
+  padding: 5px 2%;
+  display: flex;
+  justify-content: space-between;
+  background: #21396e;
+}
+header i {
+  margin-top: 2px;
+  position: relative;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+header i:hover {
+  color: #9fd44e;
+}
+header a {
+  color: white;
+}
+header a span {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 20px;
+  line-height: 30px;
+}
+header a:hover {
+  color: #9fd44e;
+}
+header a:hover i {
+  color: #9fd44e;
+}
+header .logo {
+  width: 130px;
+  height: 30px;
+  background-image: url('../file/logo/logo.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/*------------------------------*/
+/*----------MENU----------*/
+nav {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  overflow-y: auto;
+  text-align: center;
+  color: white;
+  background: #21396e;
+}
+nav::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+nav::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+nav::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #2453c0;
+  cursor: pointer;
+}
+nav .user {
+  padding: 5% 2%;
+  position: relative;
+  border-bottom: 1px solid #9fd44e;
+}
+nav .user i {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+nav .user i:hover {
+  color: #9fd44e;
+}
+nav .user h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+nav .user h3 {
+  font-size: 16px;
+  font-weight: 300;
+}
+nav > ul {
+  padding: 0 2%;
+  padding-top: 30px;
+  display: inline-block;
+  text-align: left;
+}
+nav > ul > li {
+  padding: 15px 0;
+}
+nav > ul > li a,
+nav > ul > li p {
+  font-size: 20px;
+  font-weight: 400;
+  color: #c4b6cc;
+  cursor: pointer;
+}
+nav > ul > li a i,
+nav > ul > li p i {
+  position: relative;
+  font-size: 16px;
+  transition: transform .4s;
+}
+nav > ul > li a:hover,
+nav > ul > li p:hover {
+  color: white;
+}
+nav > ul > li a:hover i,
+nav > ul > li p:hover i {
+  color: #9fd44e;
+}
+nav > ul > li.this-page a,
+nav > ul > li.opened p,
+nav > ul > li.fixed p {
+  color: white;
+}
+nav > ul > li.this-page a i,
+nav > ul > li.opened p i,
+nav > ul > li.fixed p i {
+  color: #9fd44e;
+}
+nav > ul > li.this-page a i.fa-chevron-down,
+nav > ul > li.opened p i.fa-chevron-down,
+nav > ul > li.fixed p i.fa-chevron-down {
+  transform: rotate(-180deg);
+}
+nav > ul > li.open ul.suboption,
+nav > ul > li.fixed ul.suboption {
+  display: inline-block;
+}
+nav > ul > li ul.suboption {
+  padding-top: 5px;
+  padding-left: 5px;
+  display: none;
+}
+nav > ul > li ul.suboption li a,
+nav > ul > li ul.suboption li p {
+  font-size: 18px;
+}
+nav > ul > li ul.suboption li a i,
+nav > ul > li ul.suboption li p i {
+  font-size: 14px;
+}
+nav > ul > li ul.suboption li.this-page a,
+nav > ul > li ul.suboption li.opened p,
+nav > ul > li ul.suboption li.fixed p {
+  color: white;
+}
+nav > ul > li ul.suboption li.this-page a i,
+nav > ul > li ul.suboption li.opened p i,
+nav > ul > li ul.suboption li.fixed p i {
+  color: #9fd44e;
+}
+/*------------------------------*/
+/*----------MAIN----------*/
+main {
+  width: 100%;
+  max-height: calc(100% - 40px);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+main::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+main::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+main::-webkit-scrollbar-thumb {
+  background: #2453c0;
+  cursor: pointer;
+  border-radius: 3px;
+}
+/*------------------------------*/
+/*----------SECTION.OUTSIDE----------*/
+section.outside {
+  padding: 1%;
+  display: flex;
+}
+section.outside .inside {
+  width: 100%;
+  padding: 25px;
+  overflow-x: hidden;
+  border-radius: 20px;
+  background: white;
+  /*----------Button----------*/
+  /*------------------------------*/
+  /*----------Table----------*/
+  /*------------------------------*/
+}
+section.outside .inside h1 {
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+section.outside .inside h1 i {
+  font-size: 24px;
+}
+section.outside .inside button.open-form,
+section.outside .inside button.require-page,
+section.outside .inside button.filter,
+section.outside .inside button.back-date,
+section.outside .inside button.next-date {
+  height: 32px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+  border: 1px solid #2453c0;
+  border-radius: 16px;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 30px;
+  color: #2453c0;
+  background: none;
+  cursor: pointer;
+}
+section.outside .inside button.open-form:hover,
+section.outside .inside button.require-page:hover,
+section.outside .inside button.filter:hover,
+section.outside .inside button.back-date:hover,
+section.outside .inside button.next-date:hover {
+  color: white;
+  background: #2453c0;
+}
+section.outside .inside button.open-form a,
+section.outside .inside button.require-page a,
+section.outside .inside button.filter a,
+section.outside .inside button.back-date a,
+section.outside .inside button.next-date a {
+  height: 30px;
+  display: inline-block;
+  outline: none;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+section.outside .inside button.open-form a:hover,
+section.outside .inside button.require-page a:hover,
+section.outside .inside button.filter a:hover,
+section.outside .inside button.back-date a:hover,
+section.outside .inside button.next-date a:hover {
+  color: white;
+}
+section.outside .inside button.open-form i,
+section.outside .inside button.require-page i,
+section.outside .inside button.filter i,
+section.outside .inside button.back-date i,
+section.outside .inside button.next-date i {
+  display: inline-block;
+  font-size: 14px;
+}
+section.outside .inside .overflow {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+section.outside .inside .overflow::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+section.outside .inside .overflow::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+section.outside .inside .overflow::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #2453c0;
+  cursor: pointer;
+}
+section.outside .inside .overflow table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+section.outside .inside .overflow table.contacts,
+section.outside .inside .overflow table.sales,
+section.outside .inside .overflow table.purchases,
+section.outside .inside .overflow table.projects,
+section.outside .inside .overflow table.operational {
+  min-width: 1100px;
+}
+section.outside .inside .overflow table.contacts tbody tr {
+  background: none;
+}
+section.outside .inside .overflow table.contacts tbody tr:nth-child(even) {
+  background: rgba(36, 83, 192, 0.2);
+}
+section.outside .inside .overflow table.bills {
+  min-width: 940px;
+}
+section.outside .inside .overflow table.system_users {
+  min-width: 860px;
+}
+section.outside .inside .overflow table thead,
+section.outside .inside .overflow table tbody {
+  display: flex;
+  flex-direction: column;
+}
+section.outside .inside .overflow table tbody tr {
+  background: #32a852;
+}
+section.outside .inside .overflow table tbody tr:hover {
+  color: white;
+  background: #2453c0 !important;
+}
+section.outside .inside .overflow table tbody tr:hover.no-hover {
+  color: black;
+  background: none !important;
+}
+section.outside .inside .overflow table tbody tr:hover.no-hover i {
+  color: black;
+}
+section.outside .inside .overflow table tbody tr:hover i {
+  color: white;
+}
+section.outside .inside .overflow table tr {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+}
+section.outside .inside .overflow table tr th,
+section.outside .inside .overflow table tr td {
+  height: 30px;
+  padding: 0;
+  border: 1px solid white;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+section.outside .inside .overflow table tr th.delete,
+section.outside .inside .overflow table tr td.delete,
+section.outside .inside .overflow table tr th.restore,
+section.outside .inside .overflow table tr td.restore {
+  width: 30px;
+  padding: 0;
+}
+section.outside .inside .overflow table tr th.delete a,
+section.outside .inside .overflow table tr td.delete a,
+section.outside .inside .overflow table tr th.restore a,
+section.outside .inside .overflow table tr td.restore a,
+section.outside .inside .overflow table tr th.delete button,
+section.outside .inside .overflow table tr td.delete button,
+section.outside .inside .overflow table tr th.restore button,
+section.outside .inside .overflow table tr td.restore button {
+  width: 100%;
+  padding: 0 5px;
+  border: none;
+  font-size: inherit;
+  background: none;
+  color: black;
+  cursor: pointer;
+}
+section.outside .inside .overflow table tr th {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  background: #21396e;
+}
+section.outside .inside .overflow table tr th.delete {
+  cursor: help;
+}
+section.outside .inside .overflow table tr td {
+  position: relative;
+  cursor: pointer;
+}
+section.outside .inside .overflow table tr.recent-att {
+  background: #80d982 !important;
+}
+section.outside .inside .overflow table tr.highlight {
+  background: #f2f21b !important;
+}
+section.outside .inside .overflow table tr.notification {
+  background: #f59631 !important;
+}
+section.outside .inside .overflow table tr.status-conclued {
+  background: #5da35f !important;
+}
+section.outside .inside .overflow table tr.status-opened {
+  background: #4978e6 !important;
+}
+section.outside .inside .overflow table tr.status-late {
+  background: #ff5050 !important;
+}
+section.outside .inside .overflow table tr.status-today {
+  background: #e3e322 !important;
+}
+section.outside .inside .overflow table tr.filter:hover i {
+  color: #2453c0 !important;
+}
+section.outside .inside .overflow table tr.filter input,
+section.outside .inside .overflow table tr.filter select {
+  width: 100%;
+  height: 28px;
+  padding: 0 5px;
+  margin: 0;
+  border: 1px solid #2453c0;
+  border-radius: 5px;
+  outline: none;
+  line-height: 28px;
+}
+section.outside .inside .overflow table tr.filter input[type=date],
+section.outside .inside .overflow table tr.filter select[type=date] {
+  width: calc(50% - 28px);
+  border-left: 0;
+  border-radius: 0;
+}
+section.outside .inside .overflow table tr.filter select {
+  color: #757575;
+}
+section.outside .inside .overflow table tr.filter select option {
+  color: black;
+}
+section.outside .inside .overflow table tr.filter button {
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  line-height: 26px;
+}
+section.outside .inside .overflow table tr.filter button.back-date {
+  border-radius: 5px 0 0 5px;
+}
+section.outside .inside .overflow table tr.filter button.next-date {
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+}
+section.outside .inside .overflow table tr.filter button:hover i {
+  color: white !important;
+}
+section.outside .inside .overflow table tr.filter .search {
+  margin: 0;
+}
+section.outside .inside .overflow table tbody.financial_dashboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr {
+  width: auto;
+  background: none;
+  align-content: flex-start;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr.w100 {
+  width: 100%;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr.w70 {
+  width: 70%;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr.w50 {
+  width: 50%;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr.w30 {
+  width: 30%;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr.w25 {
+  width: 25%;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr.w5 {
+  width: 5%;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr td {
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr td b {
+  font-size: 18px;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr td.top {
+  border: 2px solid #2453c0;
+  border-width: 2px 2px 0 2px;
+  border-radius: 10px 10px 0 0;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr td.middle {
+  border: 2px solid #2453c0;
+  border-width: 0 2px 0 2px;
+  border-radius: 0;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr td.middle.border {
+  border-bottom: 2px solid #2453c0;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr td.bottom {
+  border: 2px solid #2453c0;
+  border-width: 0 2px 2px 2px;
+  border-radius: 0 0 10px 10px;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr td.hr {
+  width: 100%;
+  height: 10px;
+}
+section.outside .inside .overflow table tbody.financial_dashboard tr td.chart {
+  width: 100%;
+  height: auto;
+}
+section.outside .inside.require-result {
+  display: none;
+}
+section.outside.folder .inside h1 {
+  margin-bottom: 0px;
+}
+section.outside.folder .inside h4 {
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+}
+section.outside.folder .inside h4 i {
+  font-size: 16px;
+  transition: 0.3s;
+}
+section.outside.folder .inside h4 .edit-files {
+  color: #989ea7;
+}
+section.outside.folder .inside h4 .edit-files:hover,
+section.outside.folder .inside h4 .edit-files.actived {
+  color: #000000;
+}
+section.outside.folder .inside .container {
+  padding: 10px;
+}
+section.outside.folder .inside .container.hidden {
+  display: none;
+}
+section.outside.folder .inside .container .file-outside {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+section.outside.folder .inside .container .file-outside.removed {
+  opacity: .3;
+}
+section.outside.folder .inside .container .file-outside .file-inside {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+section.outside.folder .inside .container .file-outside .file-inside > i {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+}
+section.outside.folder .inside .container .file-outside .file-inside iframe {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid black;
+}
+section.outside.folder .inside .container .file-outside .file-inside img {
+  width: 100%;
+}
+section.outside.folder .inside .container .file-outside .file-inside a.layer,
+section.outside.folder .inside .container .file-outside .file-inside span.layer,
+section.outside.folder .inside .container .file-outside .file-inside label.layer {
+  width: 100%;
+  height: calc(100% - 30px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  opacity: 0;
+  transition: 0.3s;
+}
+section.outside.folder .inside .container .file-outside .file-inside a.layer i,
+section.outside.folder .inside .container .file-outside .file-inside span.layer i,
+section.outside.folder .inside .container .file-outside .file-inside label.layer i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+}
+section.outside.folder .inside .container .file-outside .file-inside a.layer:hover,
+section.outside.folder .inside .container .file-outside .file-inside span.layer:hover,
+section.outside.folder .inside .container .file-outside .file-inside label.layer:hover,
+section.outside.folder .inside .container .file-outside .file-inside a.layer.visible,
+section.outside.folder .inside .container .file-outside .file-inside span.layer.visible,
+section.outside.folder .inside .container .file-outside .file-inside label.layer.visible {
+  opacity: 1;
+}
+section.outside.folder .inside .container .file-outside .file-inside span.delete {
+  width: auto;
+  height: auto;
+  display: none;
+  position: absolute;
+  top: 2px;
+  left: 100%;
+  transform: translateX(calc(-100% - 2px));
+  z-index: 20;
+  color: white;
+  cursor: pointer;
+}
+section.outside.folder .inside .container .file-outside .file-inside span.delete.visible {
+  display: block;
+}
+section.outside.folder .inside .container .file-outside .file-inside span.delete i {
+  font-size: 16px;
+}
+section.outside.folder .inside .container .file-outside .file-inside p {
+  width: 100%;
+  height: 30px;
+  padding: 2%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(-100%);
+  text-align: center;
+  font-size: 16px;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+section.outside.top {
+  padding-bottom: 0;
+}
+section.outside.top .inside {
+  border-bottom: 1px dashed #ccc;
+  border-radius: 20px 20px 0 0;
+}
+section.outside.bottom {
+  padding-top: 0;
+}
+section.outside.bottom .inside {
+  border-top: 1px dashed #ccc;
+  border-radius: 0 0 20px 20px;
+}
+section.outside.right {
+  padding-left: 0;
+}
+section.outside.right .inside {
+  border-left: 1px dashed #ccc;
+  border-radius: 0 20px 20px 0;
+}
+section.outside.left {
+  padding-right: 0;
+}
+section.outside.left .inside {
+  border-right: 1px dashed #ccc;
+  border-radius: 20px 0 0 20px;
+}
+section.outside.right-middle {
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+section.outside.right-middle .inside {
+  border-left: 1px dashed #ccc;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  border-radius: 0;
+}
+section.outside.left-middle {
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+section.outside.left-middle .inside {
+  border-right: 1px dashed #ccc;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  border-radius: 0;
+}
+section.outside.right-top {
+  padding-left: 0;
+  padding-bottom: 0;
+}
+section.outside.right-top .inside {
+  border-left: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  border-radius: 0 20px 0 0;
+}
+section.outside.left-top {
+  padding-right: 0;
+  padding-bottom: 0;
+}
+section.outside.left-top .inside {
+  border-right: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  border-radius: 20px 0 0 0;
+}
+section.outside.right-bottom {
+  padding-left: 0;
+  padding-top: 0;
+}
+section.outside.right-bottom .inside {
+  border-left: 1px dashed #ccc;
+  border-top: 1px dashed #ccc;
+  border-radius: 0 0 20px 0;
+}
+section.outside.left-bottom {
+  padding-right: 0;
+  padding-top: 0;
+}
+section.outside.left-bottom .inside {
+  border-right: 1px dashed #ccc;
+  border-top: 1px dashed #ccc;
+  border-radius: 0 0 0 20px;
+}
+section.outside.midle .inside {
+  border-radius: 0;
+}
+/*------------------------------*/
+/*----------PAGES----------*/
+.pages {
+  text-align: center;
+}
+.pages a {
+  font-size: 12px;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1px solid #2453c0;
+  color: #2453c0;
+  line-height: 22px;
+  vertical-align: middle;
+  margin: 0 5px;
+  margin-top: 20px;
+}
+.pages a i {
+  font-size: 11px;
+}
+.pages a:hover,
+.pages a.page-selected {
+  background: #2453c0;
+  color: white;
+}
+/*------------------------------*/
+/*----------OTHER----------*/
+.no-text-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.search {
+  position: relative;
+}
+.search input {
+  position: relative;
+  z-index: 10;
+  background: none;
+}
+.search input:focus ~ ul {
+  display: block;
+}
+.search ul.result-list {
+  width: 96%;
+  max-height: 300px;
+  position: absolute;
+  top: 53px;
+  left: 50%;
+  z-index: 15;
+  transform: translateX(-50%);
+  overflow-y: auto;
+  display: none;
+  border: 1px solid #969696;
+  font-size: 15px;
+  background: white;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.search ul.result-list::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+.search ul.result-list::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.search ul.result-list::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #2453c0;
+  cursor: pointer;
+}
+.search ul.result-list li {
+  padding: 0 3px;
+  cursor: default;
+}
+.search ul.result-list li.alone {
+  text-align: center;
+  font-style: italic;
+}
+.search ul.result-list li:hover {
+  background: #1e90ff;
+  color: white;
+}
+.search ul.result-list li.alone:hover {
+  background: none;
+  color: black;
+}
+.search ul.result-list:hover {
+  display: block;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.center {
+  width: 100%;
+  text-align: center;
+}
+.padding {
+  padding: 0 5px;
+}
+article.message-success,
+article.message-load {
+  width: auto;
+  padding: 10px;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1023;
+  display: none;
+  border-radius: 20px;
+  background: #58d656;
+}
+article.message-success p,
+article.message-load p {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: white;
+}
+article.message-load {
+  font-style: italic;
+  background: #21396e;
+}
+/*------------------------------*/
+/*----------WIDTH TEMPLATE----------*/
+.w100 {
+  width: 100%;
+}
+.n100 {
+  width: calc(100% - 30px);
+}
+.w90 {
+  width: 90%;
+}
+.n90 {
+  width: calc(90% - 30px);
+}
+.w75 {
+  width: 75%;
+}
+.n75 {
+  width: calc(75% - 30px);
+}
+.w70 {
+  width: 70%;
+}
+.n70 {
+  width: calc(70% - 30px);
+}
+.w66 {
+  width: calc((100% / 3) * 2);
+}
+.n66 {
+  width: calc(((100% / 3) * 2) - 30px);
+}
+.w60 {
+  width: 60%;
+}
+.n60 {
+  width: calc(60% - 30px);
+}
+.w55 {
+  width: 55%;
+}
+.n55 {
+  width: calc(55% - 30px);
+}
+.w50 {
+  width: 50%;
+}
+.n50 {
+  width: calc(50% - 30px);
+}
+.w45 {
+  width: 45%;
+}
+.n45 {
+  width: calc(45% - 30px);
+}
+.w40 {
+  width: 40%;
+}
+.n40 {
+  width: calc(40% - 30px);
+}
+.w37-5 {
+  width: 37.5%;
+}
+.n37-5 {
+  width: calc(37.5% - 30px);
+}
+.w35 {
+  width: 35%;
+}
+.n35 {
+  width: calc(35% - 30px);
+}
+.w33 {
+  width: calc(100% / 3);
+}
+.n33 {
+  width: calc((100% / 3) - 30px);
+}
+.w32 {
+  width: 32%;
+}
+.n32 {
+  width: calc(32% - 30px);
+}
+.w30 {
+  width: 30%;
+}
+.n30 {
+  width: calc(30% - 30px);
+}
+.w27 {
+  width: 27%;
+}
+.n27 {
+  width: calc(27% - 30px);
+}
+.w25 {
+  width: 25%;
+}
+.n25 {
+  width: calc(25% - 30px);
+}
+.w24 {
+  width: 24%;
+}
+.n24 {
+  width: calc(24% - 30px);
+}
+.w23 {
+  width: 23%;
+}
+.n23 {
+  width: calc(23% - 30px);
+}
+.w21 {
+  width: 21%;
+}
+.n21 {
+  width: calc(21% - 30px);
+}
+.w20 {
+  width: 20%;
+}
+.n20 {
+  width: calc(20% - 30px);
+}
+.w19 {
+  width: 19%;
+}
+.n19 {
+  width: calc(19% - 30px);
+}
+.w17 {
+  width: 17%;
+}
+.n17 {
+  width: calc(17% - 30px);
+}
+.w16 {
+  width: 16%;
+}
+.n16 {
+  width: calc(16% - 30px);
+}
+.w15 {
+  width: 15%;
+}
+.n15 {
+  width: calc(15% - 30px);
+}
+.w14 {
+  width: 14%;
+}
+.n14 {
+  width: calc(14% - 30px);
+}
+.w13 {
+  width: 13%;
+}
+.n13 {
+  width: calc(13% - 30px);
+}
+.w12-5 {
+  width: 12.5%;
+}
+.n12-5 {
+  width: calc(12.5% - 30px);
+}
+.w12 {
+  width: 12%;
+}
+.n12 {
+  width: calc(12% - 30px);
+}
+.w10 {
+  width: 10%;
+}
+.n10 {
+  width: calc(10% - 30px);
+}
+.w8 {
+  width: 8%;
+}
+.n8 {
+  width: calc(8% - 30px);
+}
+.w6-6 {
+  width: calc(20% / 3);
+}
+.n6-6 {
+  width: calc((20% / 3) - 30px);
+}
+.w5 {
+  width: 5%;
+}
+.n5 {
+  width: calc(5% - 30px);
+}
+.w4 {
+  width: 4%;
+}
+.n4 {
+  width: calc(4% - 30px);
+}
+.w3 {
+  width: 3%;
+}
+.n3 {
+  width: calc(3% - 30px);
+}
+.w2 {
+  width: 2%;
+}
+.n2 {
+  width: calc(2% - 30px);
+}
+.w1 {
+  width: 1%;
+}
+.n1 {
+  width: calc(1% - 30px);
+}
+/*------------------------------*/
+/*----------ASIDE INFO / FORM----------*/
+aside.container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.3);
+}
+aside.container::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+aside.container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+aside.container::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #2453c0;
+  cursor: pointer;
+}
+aside.container button.close-form {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  border: 1px solid #2453c0;
+  border-radius: 10px;
+  outline: none;
+  font-size: 10px;
+  color: #2453c0;
+  background: none;
+  cursor: pointer;
+}
+aside.container button.close-form i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+aside.container button.close-form:hover {
+  color: white;
+  background: #2453c0;
+}
+aside.container h1 {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+aside.container h1 a {
+  font-size: 20px;
+  color: #2453c0;
+}
+aside.container h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+}
+aside.container h2 a {
+  font-size: 20px;
+  color: #2453c0;
+}
+aside.container hr {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+aside.container hr.special {
+  margin-top: 20px;
+}
+aside.container hr.dashed {
+  border: 1px dashed #989ea7;
+  border-width: 1px 0 0 0;
+}
+aside.container .outline {
+  width: 600px;
+  max-width: 98%;
+  padding: 20px 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+aside.container .outline.large {
+  width: 700px;
+}
+aside.container .outline.card-table {
+  width: 80vw;
+}
+aside.container .box,
+aside.container form {
+  width: 100%;
+  padding: 2%;
+  position: relative;
+  border-radius: 15px;
+  background: white;
+}
+aside.container .box button.open-form,
+aside.container form button.open-form,
+aside.container .box button.cancel-form,
+aside.container form button.cancel-form,
+aside.container .box label.button,
+aside.container form label.button,
+aside.container .box button.restore,
+aside.container form button.restore {
+  width: auto;
+  height: 32px;
+  padding: 0 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 100;
+  border: 1px solid #2453c0;
+  border-radius: 16px;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 30px;
+  color: #2453c0;
+  background: none;
+  cursor: pointer;
+}
+aside.container .box button.open-form:hover,
+aside.container form button.open-form:hover,
+aside.container .box button.cancel-form:hover,
+aside.container form button.cancel-form:hover,
+aside.container .box label.button:hover,
+aside.container form label.button:hover,
+aside.container .box button.restore:hover,
+aside.container form button.restore:hover,
+aside.container .box button.open-form:focus,
+aside.container form button.open-form:focus,
+aside.container .box button.cancel-form:focus,
+aside.container form button.cancel-form:focus,
+aside.container .box label.button:focus,
+aside.container form label.button:focus,
+aside.container .box button.restore:focus,
+aside.container form button.restore:focus {
+  color: white;
+  background: #2453c0;
+}
+aside.container .box button.open-form.navigate,
+aside.container form button.open-form.navigate,
+aside.container .box button.cancel-form.navigate,
+aside.container form button.cancel-form.navigate,
+aside.container .box label.button.navigate,
+aside.container form label.button.navigate,
+aside.container .box button.restore.navigate,
+aside.container form button.restore.navigate {
+  color: #198e2f;
+  border: 1px solid #198e2f;
+}
+aside.container .box button.open-form.navigate:hover,
+aside.container form button.open-form.navigate:hover,
+aside.container .box button.cancel-form.navigate:hover,
+aside.container form button.cancel-form.navigate:hover,
+aside.container .box label.button.navigate:hover,
+aside.container form label.button.navigate:hover,
+aside.container .box button.restore.navigate:hover,
+aside.container form button.restore.navigate:hover,
+aside.container .box button.open-form.navigate:focus,
+aside.container form button.open-form.navigate:focus,
+aside.container .box button.cancel-form.navigate:focus,
+aside.container form button.cancel-form.navigate:focus,
+aside.container .box label.button.navigate:focus,
+aside.container form label.button.navigate:focus,
+aside.container .box button.restore.navigate:focus,
+aside.container form button.restore.navigate:focus {
+  color: white;
+  background: #198e2f;
+}
+aside.container .box button.open-form.restore,
+aside.container form button.open-form.restore,
+aside.container .box button.cancel-form.restore,
+aside.container form button.cancel-form.restore,
+aside.container .box label.button.restore,
+aside.container form label.button.restore,
+aside.container .box button.restore.restore,
+aside.container form button.restore.restore {
+  color: #21396e;
+  border: 1px solid #21396e;
+}
+aside.container .box button.open-form.restore:hover,
+aside.container form button.open-form.restore:hover,
+aside.container .box button.cancel-form.restore:hover,
+aside.container form button.cancel-form.restore:hover,
+aside.container .box label.button.restore:hover,
+aside.container form label.button.restore:hover,
+aside.container .box button.restore.restore:hover,
+aside.container form button.restore.restore:hover,
+aside.container .box button.open-form.restore:focus,
+aside.container form button.open-form.restore:focus,
+aside.container .box button.cancel-form.restore:focus,
+aside.container form button.cancel-form.restore:focus,
+aside.container .box label.button.restore:focus,
+aside.container form label.button.restore:focus,
+aside.container .box button.restore.restore:focus,
+aside.container form button.restore.restore:focus {
+  color: white;
+  background: #21396e;
+}
+aside.container .box button.cancel-form,
+aside.container form button.cancel-form {
+  margin-top: 5px;
+  border: 1px solid #989ea7;
+  color: #989ea7;
+}
+aside.container .box button.cancel-form:hover,
+aside.container form button.cancel-form:hover,
+aside.container .box button.cancel-form:focus,
+aside.container form button.cancel-form:focus {
+  background: #989ea7;
+}
+aside.container .box button.forward,
+aside.container form button.forward,
+aside.container .box a.forward,
+aside.container form a.forward {
+  width: auto;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+  text-transform: none;
+  font-size: 16px;
+  color: #2453c0;
+  background: none;
+  cursor: pointer;
+}
+aside.container .box button.forward:hover,
+aside.container form button.forward:hover,
+aside.container .box a.forward:hover,
+aside.container form a.forward:hover,
+aside.container .box button.forward:focus,
+aside.container form button.forward:focus,
+aside.container .box a.forward:focus,
+aside.container form a.forward:focus {
+  text-decoration: underline;
+  font-weight: 500;
+  color: #2453c0;
+  background: none;
+}
+aside.container .box a.forward,
+aside.container form a.forward {
+  font-style: italic;
+  cursor: pointer;
+}
+aside.container .box a.forward:hover,
+aside.container form a.forward:hover,
+aside.container .box a.forward:focus,
+aside.container form a.forward:focus {
+  font-weight: 400;
+}
+aside.container .box label.button,
+aside.container form label.button {
+  height: 22px;
+  padding: 0 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 11px;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 20px;
+}
+aside.container .box .file-content ul.file-list,
+aside.container form .file-content ul.file-list {
+  width: 100%;
+  padding: 0 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+aside.container .box .file-content ul.file-list li,
+aside.container form .file-content ul.file-list li {
+  width: 100%;
+  padding-left: 5px;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-left: 2px solid #2453c0;
+  font-size: 16px;
+  line-height: 18px;
+  cursor: default;
+}
+aside.container .box .file-content ul.file-list li.alone,
+aside.container form .file-content ul.file-list li.alone {
+  font-style: italic;
+}
+aside.container .box .file-content ul.file-list li.hidden,
+aside.container form .file-content ul.file-list li.hidden {
+  display: none;
+}
+aside.container .box .file-content ul.file-list li span,
+aside.container form .file-content ul.file-list li span,
+aside.container .box .file-content ul.file-list li a,
+aside.container form .file-content ul.file-list li a {
+  padding-left: 5px;
+}
+aside.container .box .file-content ul.file-list li a,
+aside.container form .file-content ul.file-list li a {
+  color: black;
+}
+aside.container .box .file-content ul.file-list li a:hover,
+aside.container form .file-content ul.file-list li a:hover {
+  text-decoration: underline;
+}
+aside.container .box .file-content ul.file-list li button.remove-item,
+aside.container form .file-content ul.file-list li button.remove-item,
+aside.container .box .file-content ul.file-list li button.transfer-item,
+aside.container form .file-content ul.file-list li button.transfer-item {
+  width: 16px;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 14px;
+  background: none;
+  color: #2453c0;
+  cursor: pointer;
+}
+aside.container .box .file-content ul.file-list li button.remove-item:hover,
+aside.container form .file-content ul.file-list li button.remove-item:hover,
+aside.container .box .file-content ul.file-list li button.transfer-item:hover,
+aside.container form .file-content ul.file-list li button.transfer-item:hover {
+  font-size: 16px;
+}
+aside.container .box .file-content ul.file-list li span.line,
+aside.container form .file-content ul.file-list li span.line {
+  width: 2px;
+  height: 2px;
+  padding: 0;
+  position: absolute;
+  top: calc(100% - 2px);
+  left: -2px;
+  background: #2453c0;
+  transition: 0.3s;
+}
+aside.container .box .file-content ul.file-list li:hover span.line,
+aside.container form .file-content ul.file-list li:hover span.line {
+  width: 100%;
+}
+aside.container .box button.inline,
+aside.container form button.inline,
+aside.container .box a.inline,
+aside.container form a.inline {
+  width: 100%;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+  text-align: center;
+  background: none;
+  color: #2453c0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+aside.container .box button.inline i,
+aside.container form button.inline i,
+aside.container .box a.inline i,
+aside.container form a.inline i {
+  font-size: 14px;
+}
+aside.container .box button.inline:hover,
+aside.container form button.inline:hover,
+aside.container .box a.inline:hover,
+aside.container form a.inline:hover {
+  font-size: 16px;
+}
+aside.container .box button.forward-ticket,
+aside.container form button.forward-ticket {
+  width: 16px;
+  margin-right: 5px;
+  border: none;
+  outline: none;
+  text-align: center;
+  background: none;
+  color: #2453c0;
+  cursor: pointer;
+}
+aside.container .box button.forward-ticket i,
+aside.container form button.forward-ticket i {
+  font-size: 14px;
+}
+aside.container .box button.forward-ticket:hover,
+aside.container form button.forward-ticket:hover {
+  font-size: 16px;
+}
+aside.container .box button.forward-ticket.inline,
+aside.container form button.forward-ticket.inline {
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+}
+aside.container .box button.forward-ticket.inline:hover i,
+aside.container form button.forward-ticket.inline:hover i {
+  font-size: 16px;
+}
+aside.container .box .pre_result,
+aside.container form .pre_result {
+  margin: 0 auto;
+  margin-bottom: 15px;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+aside.container .box .pre_result button,
+aside.container form .pre_result button {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid #2453c0;
+  text-align: center;
+  background-color: #fff;
+  transition: 0.4s;
+  cursor: pointer;
+}
+aside.container .box .pre_result button i,
+aside.container form .pre_result button i {
+  color: #2453c0;
+  font-size: 20px;
+}
+aside.container .box .pre_result button span,
+aside.container form .pre_result button span {
+  display: none;
+  color: #2453c0;
+  font-weight: 500;
+  transition-duration: 0.3s;
+  transition-delay: 0.4s;
+  font-size: 16px;
+}
+aside.container .box .pre_result button:hover,
+aside.container form .pre_result button:hover {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 120px;
+  border: none;
+  background-color: #2453c0;
+  color: #2453c0;
+}
+aside.container .box .pre_result button:hover i,
+aside.container form .pre_result button:hover i {
+  color: #fff;
+}
+aside.container .box .pre_result button:hover span,
+aside.container form .pre_result button:hover span {
+  color: #fff;
+  display: inline-block;
+}
+aside.container .box .parcial-permissions,
+aside.container form .parcial-permissions,
+aside.container .box .parcial-permissions2,
+aside.container form .parcial-permissions2 {
+  padding: 2%;
+  margin-bottom: 5px;
+  position: relative;
+  top: -10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+aside.container .box .parcial-permissions p,
+aside.container form .parcial-permissions p,
+aside.container .box .parcial-permissions2 p,
+aside.container form .parcial-permissions2 p {
+  margin-bottom: 5px !important;
+  font-size: 16px !important;
+}
+aside.container .box .parcial-permissions p:last-of-type,
+aside.container form .parcial-permissions p:last-of-type,
+aside.container .box .parcial-permissions2 p:last-of-type,
+aside.container form .parcial-permissions2 p:last-of-type {
+  margin-bottom: 0 !important;
+}
+aside.container .box .parcial-permissions i,
+aside.container form .parcial-permissions i,
+aside.container .box .parcial-permissions2 i,
+aside.container form .parcial-permissions2 i {
+  font-size: 14px;
+}
+aside.container .box .table,
+aside.container form .table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+aside.container .box .table .filter-table,
+aside.container form .table .filter-table {
+  width: 100%;
+  height: 70px;
+}
+aside.container .box .table.over,
+aside.container form .table.over {
+  height: 75vh;
+  overflow: hidden;
+  align-items: initial;
+  justify-content: initial;
+}
+aside.container .box .table.over::-webkit-scrollbar-track,
+aside.container form .table.over::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+aside.container .box .table.over::-webkit-scrollbar,
+aside.container form .table.over::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+aside.container .box .table.over::-webkit-scrollbar-thumb,
+aside.container form .table.over::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.2), -2px 0px 2px rgba(0, 0, 0, 0.2), 0px -2px 2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.2);
+  background: #2453c0;
+  cursor: pointer;
+}
+aside.container .box .table.over.select-row table tbody tr,
+aside.container form .table.over.select-row table tbody tr {
+  cursor: cell;
+}
+aside.container .box .table.over.select-row table tbody tr.selected-row,
+aside.container form .table.over.select-row table tbody tr.selected-row {
+  cursor: not-allowed;
+}
+aside.container .box .table.over .table-fixed,
+aside.container form .table.over .table-fixed {
+  margin-right: 5px;
+  height: 100%;
+}
+aside.container .box .table.over .table-fixed table,
+aside.container form .table.over .table-fixed table {
+  height: 100%;
+}
+aside.container .box .table.over .table-fixed table#monthsTable thead,
+aside.container form .table.over .table-fixed table#monthsTable thead {
+  height: 65px;
+}
+aside.container .box .table.over .table-fixed table#monthsTable thead tr,
+aside.container form .table.over .table-fixed table#monthsTable thead tr {
+  height: 100%;
+}
+aside.container .box .table.over .table-fixed table#monthsTable thead tr th,
+aside.container form .table.over .table-fixed table#monthsTable thead tr th {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 16px;
+  height: 100%;
+  white-space: normal;
+}
+aside.container .box .table.over .table-fixed table#monthsTable tbody,
+aside.container form .table.over .table-fixed table#monthsTable tbody {
+  height: 100%;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+aside.container .box .table.over .table-fixed table#monthsTable tbody::-webkit-scrollbar-track,
+aside.container form .table.over .table-fixed table#monthsTable tbody::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+aside.container .box .table.over .table-fixed table#monthsTable tbody::-webkit-scrollbar,
+aside.container form .table.over .table-fixed table#monthsTable tbody::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+aside.container .box .table.over .table-fixed table#monthsTable tbody::-webkit-scrollbar-thumb,
+aside.container form .table.over .table-fixed table#monthsTable tbody::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.2), -2px 0px 2px rgba(0, 0, 0, 0.2), 0px -2px 2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.2);
+  background: #2453c0;
+  cursor: pointer;
+}
+aside.container .box .table.over .table-over,
+aside.container form .table.over .table-over {
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: overlay;
+}
+aside.container .box .table.over .table-over table,
+aside.container form .table.over .table-over table {
+  height: 100%;
+}
+aside.container .box .table.over .table-over table tbody,
+aside.container form .table.over .table-over table tbody {
+  display: block;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+aside.container .box .table.over .table-over table tbody::-webkit-scrollbar,
+aside.container form .table.over .table-over table tbody::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+aside.container .box .table.over .table-over table#ucGenerator thead,
+aside.container form .table.over .table-over table#ucGenerator thead,
+aside.container .box .table.over .table-over table#ucParticipant thead,
+aside.container form .table.over .table-over table#ucParticipant thead,
+aside.container .box .table.over .table-over table#monthsTable thead,
+aside.container form .table.over .table-over table#monthsTable thead {
+  display: block;
+  height: 60px;
+}
+aside.container .box .table.over .table-over table#ucGenerator thead tr,
+aside.container form .table.over .table-over table#ucGenerator thead tr,
+aside.container .box .table.over .table-over table#ucParticipant thead tr,
+aside.container form .table.over .table-over table#ucParticipant thead tr,
+aside.container .box .table.over .table-over table#monthsTable thead tr,
+aside.container form .table.over .table-over table#monthsTable thead tr {
+  height: 100%;
+}
+aside.container .box .table.over .table-over table#ucGenerator thead tr th,
+aside.container form .table.over .table-over table#ucGenerator thead tr th,
+aside.container .box .table.over .table-over table#ucParticipant thead tr th,
+aside.container form .table.over .table-over table#ucParticipant thead tr th,
+aside.container .box .table.over .table-over table#monthsTable thead tr th,
+aside.container form .table.over .table-over table#monthsTable thead tr th {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 16px;
+  height: 100%;
+  white-space: normal;
+}
+aside.container .box .table.over .table-over table#ucGenerator tbody,
+aside.container form .table.over .table-over table#ucGenerator tbody,
+aside.container .box .table.over .table-over table#ucParticipant tbody,
+aside.container form .table.over .table-over table#ucParticipant tbody,
+aside.container .box .table.over .table-over table#monthsTable tbody,
+aside.container form .table.over .table-over table#monthsTable tbody {
+  height: calc(100% - 60px);
+  display: block;
+  padding-bottom: 10px;
+}
+aside.container .box .table.over .table-over table#ucGenerator tbody tr.selected-row,
+aside.container form .table.over .table-over table#ucGenerator tbody tr.selected-row,
+aside.container .box .table.over .table-over table#ucParticipant tbody tr.selected-row,
+aside.container form .table.over .table-over table#ucParticipant tbody tr.selected-row,
+aside.container .box .table.over .table-over table#monthsTable tbody tr.selected-row,
+aside.container form .table.over .table-over table#monthsTable tbody tr.selected-row {
+  color: white;
+  background: #2453c0 !important;
+}
+aside.container .box .table.over .table-over table#ucGenerator tbody tr.selected-row i,
+aside.container form .table.over .table-over table#ucGenerator tbody tr.selected-row i,
+aside.container .box .table.over .table-over table#ucParticipant tbody tr.selected-row i,
+aside.container form .table.over .table-over table#ucParticipant tbody tr.selected-row i,
+aside.container .box .table.over .table-over table#monthsTable tbody tr.selected-row i,
+aside.container form .table.over .table-over table#monthsTable tbody tr.selected-row i {
+  color: white;
+}
+aside.container .box .table.over .table-over table#ucGenerator tbody tr:nth-child(odd),
+aside.container form .table.over .table-over table#ucGenerator tbody tr:nth-child(odd),
+aside.container .box .table.over .table-over table#ucParticipant tbody tr:nth-child(odd),
+aside.container form .table.over .table-over table#ucParticipant tbody tr:nth-child(odd),
+aside.container .box .table.over .table-over table#monthsTable tbody tr:nth-child(odd),
+aside.container form .table.over .table-over table#monthsTable tbody tr:nth-child(odd) {
+  background: #fff;
+}
+aside.container .box .table.over .table-over table#ucGenerator tbody tr:nth-child(even),
+aside.container form .table.over .table-over table#ucGenerator tbody tr:nth-child(even),
+aside.container .box .table.over .table-over table#ucParticipant tbody tr:nth-child(even),
+aside.container form .table.over .table-over table#ucParticipant tbody tr:nth-child(even),
+aside.container .box .table.over .table-over table#monthsTable tbody tr:nth-child(even),
+aside.container form .table.over .table-over table#monthsTable tbody tr:nth-child(even) {
+  background: #ACD1FF;
+}
+aside.container .box .table.over .table-over::-webkit-scrollbar-track,
+aside.container form .table.over .table-over::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+aside.container .box .table.over .table-over::-webkit-scrollbar,
+aside.container form .table.over .table-over::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+aside.container .box .table.over .table-over::-webkit-scrollbar-thumb,
+aside.container form .table.over .table-over::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #2453c0;
+  cursor: pointer;
+}
+aside.container .box .table.over table,
+aside.container form .table.over table {
+  display: flex;
+  flex-direction: column;
+}
+aside.container .box .table table thead,
+aside.container form .table table thead,
+aside.container .box .table table tbody,
+aside.container form .table table tbody {
+  display: flex;
+  flex-direction: column;
+}
+aside.container .box .table table tbody tr:hover,
+aside.container form .table table tbody tr:hover {
+  color: #000;
+  background: #80d982 !important;
+}
+aside.container .box .table table tbody tr:hover.no-hover,
+aside.container form .table table tbody tr:hover.no-hover {
+  color: #000;
+  background: none !important;
+}
+aside.container .box .table table tbody tr:hover.no-hover i,
+aside.container form .table table tbody tr:hover.no-hover i {
+  color: #000;
+}
+aside.container .box .table table tbody tr:hover i,
+aside.container form .table table tbody tr:hover i {
+  color: white;
+}
+aside.container .box .table table tbody tr.selected-row,
+aside.container form .table table tbody tr.selected-row {
+  color: white;
+  background: #2453c0 !important;
+}
+aside.container .box .table table tbody tr.selected-row i,
+aside.container form .table table tbody tr.selected-row i {
+  color: white;
+}
+aside.container .box .table table tbody tr:nth-child(odd),
+aside.container form .table table tbody tr:nth-child(odd) {
+  background: #fff;
+}
+aside.container .box .table table tbody tr:nth-child(even),
+aside.container form .table table tbody tr:nth-child(even) {
+  background: #ACD1FF;
+}
+aside.container .box .table table tr,
+aside.container form .table table tr {
+  display: flex;
+}
+aside.container .box .table table tr th,
+aside.container form .table table tr th,
+aside.container .box .table table tr td,
+aside.container form .table table tr td {
+  height: 30px;
+  padding: 0;
+  border: 1px solid white;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+aside.container .box .table table tr th.delete,
+aside.container form .table table tr th.delete,
+aside.container .box .table table tr td.delete,
+aside.container form .table table tr td.delete,
+aside.container .box .table table tr th.restore,
+aside.container form .table table tr th.restore,
+aside.container .box .table table tr td.restore,
+aside.container form .table table tr td.restore {
+  width: 30px;
+  padding: 0;
+}
+aside.container .box .table table tr th.delete a,
+aside.container form .table table tr th.delete a,
+aside.container .box .table table tr td.delete a,
+aside.container form .table table tr td.delete a,
+aside.container .box .table table tr th.restore a,
+aside.container form .table table tr th.restore a,
+aside.container .box .table table tr td.restore a,
+aside.container form .table table tr td.restore a,
+aside.container .box .table table tr th.delete button,
+aside.container form .table table tr th.delete button,
+aside.container .box .table table tr td.delete button,
+aside.container form .table table tr td.delete button,
+aside.container .box .table table tr th.restore button,
+aside.container form .table table tr th.restore button,
+aside.container .box .table table tr td.restore button,
+aside.container form .table table tr td.restore button {
+  width: 100%;
+  padding: 0 5px;
+  border: none;
+  font-size: inherit;
+  background: none;
+  color: black;
+  cursor: pointer;
+}
+aside.container .box .table table tr th,
+aside.container form .table table tr th {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  background: #21396e;
+}
+aside.container .box .table table tr th.delete,
+aside.container form .table table tr th.delete {
+  cursor: help;
+}
+aside.container .box .table table tr td,
+aside.container form .table table tr td {
+  position: relative;
+}
+aside.container .box {
+  text-align: center;
+}
+aside.container .box.flex {
+  display: flex;
+  justify-content: space-between;
+}
+aside.container .box .commands {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+aside.container .box .commands .group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+aside.container .box .commands .group button {
+  margin: 0;
+}
+aside.container .box .content {
+  max-width: 100%;
+  display: inline-block;
+  text-align: justify;
+}
+aside.container .box .content.left,
+aside.container .box .content.right {
+  max-height: 51vh;
+  overflow-x: none;
+  overflow-y: auto;
+  width: 48%;
+}
+aside.container .box .content.left p,
+aside.container .box .content.right p {
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 200;
+}
+aside.container .box .content.left p b,
+aside.container .box .content.right p b {
+  font-weight: 500;
+}
+aside.container .box .content.left::-webkit-scrollbar-track,
+aside.container .box .content.right::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+aside.container .box .content.left::-webkit-scrollbar,
+aside.container .box .content.right::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+aside.container .box .content.left::-webkit-scrollbar-thumb,
+aside.container .box .content.right::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #2453c0;
+  cursor: pointer;
+}
+aside.container .box .content.left hr,
+aside.container .box .content.right hr {
+  width: 100%;
+}
+aside.container .box .content#observations {
+  line-height: 10px;
+}
+aside.container .box .content#observations p {
+  font-size: 14px;
+  font-weight: 200;
+}
+aside.container .box .content#observations p b {
+  font-weight: 500;
+}
+aside.container .box .content .slide {
+  height: 0px;
+  opacity: 0;
+  overflow: hidden;
+}
+aside.container .box .content h3 {
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+}
+aside.container .box .content h3.slide-on {
+  cursor: pointer;
+}
+aside.container .box .content h3.slide-on i {
+  font-size: 16px;
+  transition: 0.3s;
+}
+aside.container .box .content hr {
+  margin-top: 15px;
+}
+aside.container .box .content p {
+  margin-bottom: 10px;
+  text-align: justify;
+  font-size: 18px;
+  font-weight: 400;
+  white-space: pre-line;
+}
+aside.container .box .content p b {
+  font-weight: 600;
+}
+aside.container .box .content p a {
+  font-style: italic;
+  color: #0000ee;
+}
+aside.container .box .content .notification p {
+  font-size: 16px;
+}
+aside.container .box .content .notification button.remove-notification {
+  width: 16px;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 14px;
+  background: none;
+  color: #2453c0;
+  cursor: pointer;
+}
+aside.container .box .content .notification button.remove-notification:hover {
+  font-size: 16px;
+}
+aside.container .box .content .comments {
+  padding: 0 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+aside.container .box .content .comments.highlight {
+  background-color: #f2f21b;
+}
+aside.container .box .content .comments p {
+  margin-bottom: 0;
+}
+aside.container form p.error {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #f5594e;
+}
+aside.container form label {
+  width: 100%;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+}
+aside.container form label b.required {
+  color: #f5594e;
+  font-size: 14px;
+}
+aside.container form label a {
+  color: #000;
+}
+aside.container form .input,
+aside.container form input,
+aside.container form select,
+aside.container form textarea {
+  width: 100%;
+  height: 30px;
+  padding: 0 5px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  background: white;
+}
+aside.container form .input.left,
+aside.container form input.left,
+aside.container form select.left,
+aside.container form textarea.left {
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+aside.container form .input.left.top,
+aside.container form input.left.top,
+aside.container form select.left.top,
+aside.container form textarea.left.top {
+  margin-bottom: 0;
+  border-bottom: none;
+  border-radius: 5px 0 0 0;
+}
+aside.container form .input.left.bottom,
+aside.container form input.left.bottom,
+aside.container form select.left.bottom,
+aside.container form textarea.left.bottom {
+  margin-top: 0;
+  border-radius: 0 0 0 5px;
+}
+aside.container form .input.middle,
+aside.container form input.middle,
+aside.container form select.middle,
+aside.container form textarea.middle {
+  border-right: none;
+  border-radius: 0;
+}
+aside.container form .input.middle.top,
+aside.container form input.middle.top,
+aside.container form select.middle.top,
+aside.container form textarea.middle.top {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+aside.container form .input.middle.bottom,
+aside.container form input.middle.bottom,
+aside.container form select.middle.bottom,
+aside.container form textarea.middle.bottom {
+  margin-top: 0;
+}
+aside.container form .input.right,
+aside.container form input.right,
+aside.container form select.right,
+aside.container form textarea.right {
+  border-radius: 0 5px 5px 0;
+}
+aside.container form .input.right.top,
+aside.container form input.right.top,
+aside.container form select.right.top,
+aside.container form textarea.right.top {
+  margin-bottom: 0;
+  border-bottom: none;
+  border-radius: 0 5px 0 0;
+}
+aside.container form .input.right.bottom,
+aside.container form input.right.bottom,
+aside.container form select.right.bottom,
+aside.container form textarea.right.bottom {
+  margin-top: 0;
+  border-radius: 0 0 5px 0;
+}
+aside.container form .add-inverter,
+aside.container form .remove-inverter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+aside.container form .add-inverter i,
+aside.container form .remove-inverter i {
+  font-size: 16px;
+  color: #2453c0;
+  cursor: pointer;
+}
+aside.container form .add-inverter i:hover,
+aside.container form .remove-inverter i:hover {
+  font-size: 18px;
+}
+aside.container form .add-participant,
+aside.container form .remove-participant {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+aside.container form .add-participant i,
+aside.container form .remove-participant i {
+  font-size: 16px;
+  color: #2453c0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+aside.container form .add-participant:disabled,
+aside.container form .remove-participant:disabled {
+  background: #8c8c8c;
+}
+aside.container form .add-participant:disabled i,
+aside.container form .remove-participant:disabled i {
+  cursor: not-allowed;
+  color: #000;
+}
+aside.container form .add-participant:hover {
+  background: #2453c0;
+}
+aside.container form .add-participant:hover i {
+  color: #fff;
+}
+aside.container form .add-participant:disabled:hover {
+  background: #8c8c8c;
+}
+aside.container form .add-participant:disabled:hover i {
+  color: #000;
+}
+aside.container form textarea {
+  height: 90px;
+  padding: 2px 5px;
+  line-height: 20px;
+  resize: vertical;
+}
+aside.container form textarea::-webkit-scrollbar-track {
+  background-color: rgba(36, 83, 192, 0.1);
+}
+aside.container form textarea::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+aside.container form textarea::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #2453c0;
+  cursor: pointer;
+}
+aside.container form textarea.small {
+  height: 30px;
+  min-height: 30px;
+}
+aside.container form .tox-tinymce {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+}
+aside.container form .tox-tinymce .tox-statusbar__path,
+aside.container form .tox-tinymce span.tox-statusbar__branding {
+  display: none;
+}
+aside.container form .tox-tinymce .tox-menubar button {
+  height: 24px;
+}
+aside.container form .tox-tinymce .tox-toolbar-overlord,
+aside.container form .tox-tinymce .tox-toolbar--scrolling {
+  border-bottom: 1px solid #ccc;
+}
+aside.container form .tox-tinymce .tox-toolbar__group button {
+  width: 24px;
+  height: 24px;
+}
+aside.container form .tox-tinymce .tox-toolbar__group button.tox-tbtn.tox-tbtn--select.tox-tbtn--bespoke {
+  width: auto;
+}
+aside.container form .group-checkbox {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 5px 3px;
+}
+aside.container form .group-checkbox .item {
+  padding: 5px;
+}
+aside.container form .group-checkbox .item label {
+  text-align: left;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+  cursor: default;
+}
+aside.container form .group-checkbox .item input[type="number"],
+aside.container form .group-checkbox .item input[type="text"] {
+  width: 100%;
+  margin: 0;
+  cursor: text;
+}
+aside.container form .group-checkbox div#select_to_confirm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+aside.container form .group-checkbox input[type="checkbox"] {
+  width: 13px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+aside.container form .group-checkbox label {
+  width: calc(100% - 13px);
+  padding-left: 5px;
+  cursor: pointer;
+}
+aside.container form .group-checkbox label.color {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  padding-left: 0;
+  border-radius: 5px;
+  text-align: center;
+}
+aside.container form .group-checkbox.confirm {
+  direction: rtl;
+}
+aside.container form .group-checkbox.confirm .inverted {
+  width: 100%;
+  direction: ltr;
+}
+aside.container form .content-radio {
+  width: 100%;
+  justify-content: center;
+}
+aside.container form .content-radio .group-checkbox {
+  padding: 10px;
+}
+aside.container form .content-radio .group-checkbox label {
+  position: relative;
+}
+aside.container form .content-radio .group-checkbox label input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+aside.container form input[type=number] {
+  padding-right: 0;
+}
+aside.container form input[type=number].no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+aside.container form input[type=submit] {
+  width: auto;
+  height: 32px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+  border: 1px solid #2453c0;
+  border-radius: 16px;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 30px;
+  color: #2453c0;
+  background: none;
+  cursor: pointer;
+}
+aside.container form input[type=submit]:hover,
+aside.container form input[type=submit]:focus {
+  color: white;
+  background: #2453c0;
+}
+aside.container form input[type=file] {
+  display: none;
+}
+aside.container form .select-or-add input {
+  width: calc(100% - 30px);
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+aside.container form .select-or-add select {
+  width: calc(100% - 30px);
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+aside.container form .select-or-add button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 0 5px 5px 0;
+}
+aside.container form .parcel input[type="text"] {
+  width: calc(100% - 30px);
+  margin-bottom: 5px;
+  border-radius: 5px 0 0 5px;
+}
+aside.container form .parcel input[type="text"].money {
+  width: calc(50% - 30px);
+}
+aside.container form .parcel input[type="date"] {
+  width: 50%;
+  margin-bottom: 5px;
+  border-left: none;
+  border-radius: 0;
+}
+aside.container form .parcel .icon,
+aside.container form .parcel .icon2 {
+  width: 30px;
+  height: 30px;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  line-height: 28px;
+}
+aside.container form .parcel .icon i,
+aside.container form .parcel .icon2 i {
+  font-size: 16px;
+  color: #2453c0;
+  cursor: pointer;
+}
+aside.container form .parcel .icon i:hover,
+aside.container form .parcel .icon2 i:hover {
+  font-size: 18px;
+}
+/*------------------------------*/
+/*----------ASIDE INFO / FORM----------*/
+form.new-file input {
+  display: none;
+}
+form.new-file label {
+  cursor: pointer;
+}
+/*------------------------------*/
+/*----------SECTION.HOME----------*/
+section.home .inside h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+section.home .inside h1 i {
+  font-size: 20px;
+}
+section.home .inside .notes-content .single {
+  padding: 1%;
+}
+section.home .inside .notes-content .single .header,
+section.home .inside .notes-content .single p.footer {
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  background: #f59631;
+}
+section.home .inside .notes-content .single .header {
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+}
+section.home .inside .notes-content .single .header a {
+  color: inherit;
+}
+section.home .inside .notes-content .single .header i {
+  font-size: 16px;
+  cursor: pointer;
+}
+section.home .inside .notes-content .single p.footer {
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  border-radius: 0 0 10px 10px;
+}
+section.home .inside .notes-content .single .note {
+  padding: 15px 10px;
+  border: 1px solid #fff2ab;
+  white-space: pre-line;
+  word-wrap: break-word;
+  background: #fff7d1;
+}
+section.home .inside button.open-form {
+  margin-bottom: 0;
+}
+section.home .inside .pages a {
+  margin-top: 0;
+}
+/*------------------------------*/
+@media screen and (max-width: 1200px) {
+  section.home .inside .notes-content .single.w25 {
+    width: calc(100% / 3);
+  }
+}
+@media screen and (max-width: 1024px) {
+  section.outside .inside {
+    /*----------Button----------*/
+    /*------------------------------*/
+    /*----------Table----------*/
+    /*------------------------------*/
+  }
+  section.outside .inside h1 {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  section.outside .inside h1 i {
+    font-size: 20px;
+  }
+  section.outside .inside button.open-form {
+    height: 26px;
+    padding: 0 8px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  section.outside .inside button.open-form a {
+    height: 24px;
+  }
+  section.outside .inside .overflow table tr th,
+  section.outside .inside .overflow table tr td {
+    height: 26px;
+    font-size: 13px;
+    line-height: 26px;
+  }
+  section.outside .inside .overflow table tr th {
+    font-size: 14px;
+  }
+  section.outside.folder .inside h4 {
+    font-size: 18px;
+  }
+  section.outside.folder .inside h4 i {
+    font-size: 14px;
+  }
+  section.outside.folder .inside .container {
+    padding: 5px;
+  }
+  section.outside.folder .inside .container.w25 {
+    width: calc(100% / 3);
+  }
+  section.outside.folder .inside .container.w12-5 {
+    width: calc(100% / 6);
+  }
+  section.outside.folder .inside .container .file-outside .file-inside > i {
+    top: calc(50% - 10px);
+    font-size: 45px;
+  }
+  section.outside.folder .inside .container .file-outside .file-inside a.layer,
+  section.outside.folder .inside .container .file-outside .file-inside span.layer,
+  section.outside.folder .inside .container .file-outside .file-inside label.layer {
+    height: calc(100% - 20px);
+  }
+  section.outside.folder .inside .container .file-outside .file-inside a.layer i,
+  section.outside.folder .inside .container .file-outside .file-inside span.layer i,
+  section.outside.folder .inside .container .file-outside .file-inside label.layer i {
+    font-size: 45px;
+  }
+  section.outside.folder .inside .container .file-outside .file-inside span.delete {
+    top: 0;
+    transform: translateX(calc(-100% - 3px));
+  }
+  section.outside.folder .inside .container .file-outside .file-inside span.delete i {
+    font-size: 12px;
+  }
+  section.outside.folder .inside .container .file-outside .file-inside p {
+    height: 20px;
+    font-size: 12px;
+  }
+  aside.container button.close-form {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    font-size: 8px;
+  }
+  aside.container h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+  aside.container h2 a {
+    font-size: 18px;
+  }
+  aside.container hr {
+    margin-bottom: 10px;
+  }
+  aside.container hr.special {
+    margin-top: 15px;
+  }
+  aside.container .box button.open-form,
+  aside.container form button.open-form,
+  aside.container .box button.cancel-form,
+  aside.container form button.cancel-form,
+  aside.container .box label.button,
+  aside.container form label.button {
+    height: 26px;
+    padding: 0 8px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  aside.container .box button.cancel-form,
+  aside.container form button.cancel-form {
+    margin-top: 5px;
+  }
+  aside.container .box button.forward,
+  aside.container form button.forward,
+  aside.container .box span.forward,
+  aside.container form span.forward {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  aside.container .box label.button,
+  aside.container form label.button {
+    height: 20px;
+    padding: 0 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  aside.container .box .file-content ul.file-list,
+  aside.container form .file-content ul.file-list {
+    padding: 0 5px;
+    margin-bottom: 10px;
+  }
+  aside.container .box .file-content ul.file-list li,
+  aside.container form .file-content ul.file-list li {
+    padding-left: 3px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  aside.container .box .file-content ul.file-list li button.remove-item,
+  aside.container form .file-content ul.file-list li button.remove-item,
+  aside.container .box .file-content ul.file-list li button.transfer-item,
+  aside.container form .file-content ul.file-list li button.transfer-item {
+    width: 14px;
+    font-size: 12px;
+  }
+  aside.container .box .file-content ul.file-list li button.remove-item:hover,
+  aside.container form .file-content ul.file-list li button.remove-item:hover,
+  aside.container .box .file-content ul.file-list li button.transfer-item:hover,
+  aside.container form .file-content ul.file-list li button.transfer-item:hover {
+    font-size: 14px;
+  }
+  aside.container .box button.forward-ticket,
+  aside.container form button.forward-ticket {
+    width: 14px;
+    margin-right: 3px;
+    font-size: 12px;
+  }
+  aside.container .box button.forward-ticket:hover,
+  aside.container form button.forward-ticket:hover {
+    font-size: 14px;
+  }
+  aside.container .box .parcial-permissions,
+  aside.container form .parcial-permissions,
+  aside.container .box .parcial-permissions2,
+  aside.container form .parcial-permissions2 {
+    margin-bottom: 3px;
+    position: relative;
+    top: -5px;
+  }
+  aside.container .box .parcial-permissions p,
+  aside.container form .parcial-permissions p,
+  aside.container .box .parcial-permissions2 p,
+  aside.container form .parcial-permissions2 p {
+    margin-bottom: 3px !important;
+    font-size: 14px !important;
+  }
+  aside.container .box .parcial-permissions i,
+  aside.container form .parcial-permissions i,
+  aside.container .box .parcial-permissions2 i,
+  aside.container form .parcial-permissions2 i {
+    font-size: 12px;
+  }
+  aside.container .box .content h3 {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  aside.container .box .content h3.slide-on i {
+    font-size: 14px;
+  }
+  aside.container .box .content hr {
+    margin-top: 10px;
+  }
+  aside.container .box .content p {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  aside.container .box .content p b {
+    font-weight: 500;
+  }
+  aside.container .box .content .notification p {
+    font-size: 14px;
+  }
+  aside.container .box .content .notification button.remove-notification {
+    width: 14px;
+    font-size: 12px;
+  }
+  aside.container .box .content .notification button.remove-notification:hover {
+    font-size: 14px;
+  }
+  aside.container .box .content .comments {
+    padding: 0 10px;
+    margin-bottom: 5px;
+  }
+  aside.container form p.error {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  aside.container form label {
+    font-size: 14px;
+  }
+  aside.container form .input,
+  aside.container form input,
+  aside.container form select,
+  aside.container form textarea {
+    height: 24px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  aside.container form textarea {
+    height: 72px;
+    line-height: 18px;
+  }
+  aside.container form textarea.small {
+    height: 24px;
+    min-height: 24px;
+  }
+  aside.container form .tox-tinymce {
+    margin-top: 3px;
+    margin-bottom: 10px;
+  }
+  aside.container form .tox-tinymce .tox-menubar button {
+    height: 20px;
+  }
+  aside.container form .tox-tinymce .tox-toolbar__group button {
+    width: 20px;
+    height: 20px;
+  }
+  aside.container form .tox-tinymce .tox-toolbar__group button.tox-tbtn.tox-tbtn--select.tox-tbtn--bespoke {
+    width: auto;
+  }
+  aside.container form .group-checkbox input {
+    width: 10px;
+  }
+  aside.container form .group-checkbox label.color {
+    width: 24px;
+    height: 24px;
+  }
+  aside.container form .content-radio .group-checkbox {
+    padding: 5px;
+  }
+  aside.container form input[type=submit] {
+    height: 26px;
+    padding: 0 8px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  aside.container form .select-or-add input {
+    width: calc(100% - 24px);
+  }
+  aside.container form .select-or-add button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  aside.container form .search ul.result-list {
+    position: absolute;
+    top: 44px;
+    font-size: 14px;
+  }
+  aside.container form .parcel input[type="text"] {
+    width: calc(50% - 24px);
+    margin-bottom: 3px;
+  }
+  aside.container form .parcel input[type="date"] {
+    margin-bottom: 3px;
+  }
+  aside.container form .parcel .icon {
+    width: 24px;
+    height: 24px;
+    margin: 3px 0;
+    line-height: 22px;
+  }
+  aside.container form .parcel .icon i {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 930px) {
+  header {
+    height: 30px;
+  }
+  header i {
+    margin-top: 1px;
+    font-size: 20px;
+  }
+  header a span {
+    line-height: 20px;
+  }
+  header .logo {
+    width: 112px;
+    height: 20px;
+  }
+  nav {
+    width: 200px;
+  }
+  nav .user i {
+    font-size: 10px;
+  }
+  nav .user h2 {
+    font-size: 20px;
+  }
+  nav .user h3 {
+    font-size: 14px;
+  }
+  nav > ul {
+    padding-top: 10px;
+  }
+  nav > ul > li {
+    padding: 10px 0;
+  }
+  nav > ul > li a,
+  nav > ul > li p {
+    font-size: 16px;
+  }
+  nav > ul > li a i,
+  nav > ul > li p i {
+    font-size: 14px;
+  }
+  nav > ul > li ul.suboption li a,
+  nav > ul > li ul.suboption li p {
+    font-size: 16px;
+  }
+  nav > ul > li ul.suboption li a i,
+  nav > ul > li ul.suboption li p i {
+    font-size: 12px;
+  }
+  main {
+    max-height: calc(100% - 30px);
+  }
+  section.home .inside .notes-content .single.w25 {
+    width: 50%;
+  }
+  section.outside .inside {
+    /*----------Button----------*/
+    /*------------------------------*/
+    /*----------Table----------*/
+    /*------------------------------*/
+  }
+  section.outside.folder.w50 {
+    width: 100%;
+  }
+  section.outside.folder .inside .container.w25,
+  section.outside.folder .inside .container.w12-5 {
+    width: 25%;
+  }
+  section.outside.right {
+    padding-left: 1%;
+    padding-top: 0;
+  }
+  section.outside.right .inside {
+    border-top: 1px dashed #ccc;
+    border-left: none;
+    border-radius: 0 0 20px 20px;
+  }
+  section.outside.left {
+    padding-right: 1%;
+    padding-bottom: 0;
+  }
+  section.outside.left .inside {
+    border-bottom: 1px dashed #ccc;
+    border-right: none;
+    border-radius: 20px 20px 0 0;
+  }
+  section.outside.right-middle {
+    padding: 0 1% 0 1%;
+  }
+  section.outside.right-middle .inside {
+    border-left: none;
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+    border-radius: 0;
+  }
+  section.outside.left-middle {
+    padding: 0 1% 0 1%;
+  }
+  section.outside.left-middle .inside {
+    border-right: none;
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+    border-radius: 0;
+  }
+  section.outside.right-top {
+    padding: 0 1% 0 1%;
+  }
+  section.outside.right-top .inside {
+    border-left: none;
+    border-bottom: 1px dashed #ccc;
+    border-top: 1px dashed #ccc;
+    border-radius: 0;
+  }
+  section.outside.left-top {
+    padding: 1% 1% 0 1%;
+  }
+  section.outside.left-top .inside {
+    border-right: none;
+    border-bottom: 1px dashed #ccc;
+    border-radius: 20px 20px 0 0;
+  }
+  section.outside.right-bottom {
+    padding: 0 1% 1% 1%;
+  }
+  section.outside.right-bottom .inside {
+    border-left: none;
+    border-top: 1px dashed #ccc;
+    border-radius: 0 0 20px 20px;
+  }
+  section.outside.left-bottom {
+    padding: 0 1% 0 1%;
+  }
+  section.outside.left-bottom .inside {
+    border-right: none;
+    border-top: 1px dashed #ccc;
+    border-radius: 0;
+  }
+  section.outside.midle .inside {
+    border-radius: 0;
+  }
+}
+@media screen and (max-width: 640px) {
+  section.home .inside .notes-content .single.w25 {
+    width: 100%;
+  }
+  section.outside .inside {
+    /*----------Button----------*/
+    /*------------------------------*/
+    /*----------Table----------*/
+    /*------------------------------*/
+  }
+  section.outside.folder .inside .container.w25,
+  section.outside.folder .inside .container.w12-5 {
+    width: calc(100% / 3);
+  }
+  aside.container .box .w45,
+  aside.container form .w45,
+  aside.container .box .w40,
+  aside.container form .w40,
+  aside.container .box .w33,
+  aside.container form .w33,
+  aside.container .box .w30,
+  aside.container form .w30,
+  aside.container .box .file-content,
+  aside.container form .file-content {
+    width: 50%;
+  }
+  aside.container .box .w100.barrier,
+  aside.container form .w100.barrier,
+  aside.container .box .w5,
+  aside.container form .w5 {
+    display: none;
+  }
+}
+@media screen and (max-width: 510px) {
+  section.outside .inside {
+    /*----------Button----------*/
+    /*------------------------------*/
+    /*----------Table----------*/
+    /*------------------------------*/
+  }
+  section.outside.folder .inside .container.w25,
+  section.outside.folder .inside .container.w12-5 {
+    width: 50%;
+  }
+  aside.container .box .w50,
+  aside.container form .w50,
+  aside.container .box .w45,
+  aside.container form .w45,
+  aside.container .box .w40,
+  aside.container form .w40,
+  aside.container .box .w33,
+  aside.container form .w33,
+  aside.container .box .w30,
+  aside.container form .w30,
+  aside.container .box .file-content,
+  aside.container form .file-content {
+    width: 100%;
+  }
+}
+/*------------------------------*/

@@ -1,0 +1,72 @@
+/*----------LOGIN----------*/
+section.login {
+  background: linear-gradient(to bottom right, @background-color, darken(@background-color, 10%));
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  #logo{
+    color: @primary-color;
+    margin-bottom: 20px;
+    max-width: 100%;
+    max-height: 80px;
+  }
+
+  form {
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: @primary-color;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      margin-right: 0; // Alteração feita aqui
+
+      &:focus {
+        outline: none;
+        border-color: @primary-color;
+      }
+    }
+
+    .login-error {
+      color: @secondary-color;
+      margin-bottom: 15px;
+    }
+
+    .center {
+      text-align: center;
+      margin-bottom: 15px;
+
+      input[type="submit"] {
+        background-color: @primary-color;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken(@primary-color, 10%);
+        }
+      }
+
+      .checkbox {
+        display: inline-block; // Adição feita aqui
+        margin-right: 5px; // Adição feita aqui
+      }
+    }
+  }
+}
+/*------------------------------*/
