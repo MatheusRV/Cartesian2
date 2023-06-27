@@ -1,0 +1,510 @@
+@media screen and (max-width: 1200px) {
+  section.home .inside .notes-content .single.w25 {
+    width: calc(100% / 3);
+  }
+}
+@media screen and (max-width: 1024px) {
+  section.outside .inside {
+    /*----------Button----------*/
+    /*------------------------------*/
+    /*----------Table----------*/
+    /*------------------------------*/
+  }
+  section.outside .inside h1 {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  section.outside .inside h1 i {
+    font-size: 20px;
+  }
+  section.outside .inside button.open-form {
+    height: 26px;
+    padding: 0 8px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  section.outside .inside button.open-form a {
+    height: 24px;
+  }
+  section.outside .inside .overflow table tr th,
+  section.outside .inside .overflow table tr td {
+    height: 26px;
+    font-size: 13px;
+    line-height: 26px;
+  }
+  section.outside .inside .overflow table tr th {
+    font-size: 14px;
+  }
+  section.outside.folder .inside h4 {
+    font-size: 18px;
+  }
+  section.outside.folder .inside h4 i {
+    font-size: 14px;
+  }
+  section.outside.folder .inside .container {
+    padding: 5px;
+  }
+  section.outside.folder .inside .container.w25 {
+    width: calc(100% / 3);
+  }
+  section.outside.folder .inside .container.w12-5 {
+    width: calc(100% / 6);
+  }
+  section.outside.folder .inside .container .file-outside .file-inside > i {
+    top: calc(50% - 10px);
+    font-size: 45px;
+  }
+  section.outside.folder .inside .container .file-outside .file-inside a.layer,
+  section.outside.folder .inside .container .file-outside .file-inside span.layer,
+  section.outside.folder .inside .container .file-outside .file-inside label.layer {
+    height: calc(100% - 20px);
+  }
+  section.outside.folder .inside .container .file-outside .file-inside a.layer i,
+  section.outside.folder .inside .container .file-outside .file-inside span.layer i,
+  section.outside.folder .inside .container .file-outside .file-inside label.layer i {
+    font-size: 45px;
+  }
+  section.outside.folder .inside .container .file-outside .file-inside span.delete {
+    top: 0;
+    transform: translateX(calc(-100% - 3px));
+  }
+  section.outside.folder .inside .container .file-outside .file-inside span.delete i {
+    font-size: 12px;
+  }
+  section.outside.folder .inside .container .file-outside .file-inside p {
+    height: 20px;
+    font-size: 12px;
+  }
+  aside.container button.close-form {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    font-size: 8px;
+  }
+  aside.container h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+  aside.container h2 a {
+    font-size: 18px;
+  }
+  aside.container hr {
+    margin-bottom: 10px;
+  }
+  aside.container hr.special {
+    margin-top: 15px;
+  }
+  aside.container .box button.open-form,
+  aside.container form button.open-form,
+  aside.container .box button.cancel-form,
+  aside.container form button.cancel-form,
+  aside.container .box label.button,
+  aside.container form label.button {
+    height: 26px;
+    padding: 0 8px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  aside.container .box button.cancel-form,
+  aside.container form button.cancel-form {
+    margin-top: 5px;
+  }
+  aside.container .box button.forward,
+  aside.container form button.forward,
+  aside.container .box span.forward,
+  aside.container form span.forward {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  aside.container .box label.button,
+  aside.container form label.button {
+    height: 20px;
+    padding: 0 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  aside.container .box .file-content ul.file-list,
+  aside.container form .file-content ul.file-list {
+    padding: 0 5px;
+    margin-bottom: 10px;
+  }
+  aside.container .box .file-content ul.file-list li,
+  aside.container form .file-content ul.file-list li {
+    padding-left: 3px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  aside.container .box .file-content ul.file-list li button.remove-item,
+  aside.container form .file-content ul.file-list li button.remove-item,
+  aside.container .box .file-content ul.file-list li button.transfer-item,
+  aside.container form .file-content ul.file-list li button.transfer-item {
+    width: 14px;
+    font-size: 12px;
+  }
+  aside.container .box .file-content ul.file-list li button.remove-item:hover,
+  aside.container form .file-content ul.file-list li button.remove-item:hover,
+  aside.container .box .file-content ul.file-list li button.transfer-item:hover,
+  aside.container form .file-content ul.file-list li button.transfer-item:hover {
+    font-size: 14px;
+  }
+  aside.container .box button.forward-ticket,
+  aside.container form button.forward-ticket {
+    width: 14px;
+    margin-right: 3px;
+    font-size: 12px;
+  }
+  aside.container .box button.forward-ticket:hover,
+  aside.container form button.forward-ticket:hover {
+    font-size: 14px;
+  }
+  aside.container .box .parcial-permissions,
+  aside.container form .parcial-permissions,
+  aside.container .box .parcial-permissions2,
+  aside.container form .parcial-permissions2 {
+    margin-bottom: 3px;
+    position: relative;
+    top: -5px;
+  }
+  aside.container .box .parcial-permissions p,
+  aside.container form .parcial-permissions p,
+  aside.container .box .parcial-permissions2 p,
+  aside.container form .parcial-permissions2 p {
+    margin-bottom: 3px !important;
+    font-size: 14px !important;
+  }
+  aside.container .box .parcial-permissions i,
+  aside.container form .parcial-permissions i,
+  aside.container .box .parcial-permissions2 i,
+  aside.container form .parcial-permissions2 i {
+    font-size: 12px;
+  }
+  aside.container .box .content h3 {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  aside.container .box .content h3.slide-on i {
+    font-size: 14px;
+  }
+  aside.container .box .content hr {
+    margin-top: 10px;
+  }
+  aside.container .box .content p {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  aside.container .box .content p b {
+    font-weight: 500;
+  }
+  aside.container .box .content .notification p {
+    font-size: 14px;
+  }
+  aside.container .box .content .notification button.remove-notification {
+    width: 14px;
+    font-size: 12px;
+  }
+  aside.container .box .content .notification button.remove-notification:hover {
+    font-size: 14px;
+  }
+  aside.container .box .content .comments {
+    padding: 0 10px;
+    margin-bottom: 5px;
+  }
+  aside.container form p.error {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  aside.container form label {
+    font-size: 14px;
+  }
+  aside.container form .input,
+  aside.container form input,
+  aside.container form select,
+  aside.container form textarea {
+    height: 24px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  aside.container form textarea {
+    height: 72px;
+    line-height: 18px;
+  }
+  aside.container form textarea.small {
+    height: 24px;
+    min-height: 24px;
+  }
+  aside.container form .tox-tinymce {
+    margin-top: 3px;
+    margin-bottom: 10px;
+  }
+  aside.container form .tox-tinymce .tox-menubar button {
+    height: 20px;
+  }
+  aside.container form .tox-tinymce .tox-toolbar__group button {
+    width: 20px;
+    height: 20px;
+  }
+  aside.container form .tox-tinymce .tox-toolbar__group button.tox-tbtn.tox-tbtn--select.tox-tbtn--bespoke {
+    width: auto;
+  }
+  aside.container form .group-checkbox input {
+    width: 10px;
+  }
+  aside.container form .group-checkbox label.color {
+    width: 24px;
+    height: 24px;
+  }
+  aside.container form .content-radio .group-checkbox {
+    padding: 5px;
+  }
+  aside.container form input[type=submit] {
+    height: 26px;
+    padding: 0 8px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  aside.container form .select-or-add input {
+    width: calc(100% - 24px);
+  }
+  aside.container form .select-or-add button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  aside.container form .search ul.result-list {
+    position: absolute;
+    top: 44px;
+    font-size: 14px;
+  }
+  aside.container form .parcel input[type="text"] {
+    width: calc(50% - 24px);
+    margin-bottom: 3px;
+  }
+  aside.container form .parcel input[type="date"] {
+    margin-bottom: 3px;
+  }
+  aside.container form .parcel .icon {
+    width: 24px;
+    height: 24px;
+    margin: 3px 0;
+    line-height: 22px;
+  }
+  aside.container form .parcel .icon i {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 930px) {
+  header {
+    height: 30px;
+  }
+  header i {
+    margin-top: 1px;
+    font-size: 20px;
+  }
+  header a span {
+    line-height: 20px;
+  }
+  header .logo {
+    width: 112px;
+    height: 20px;
+  }
+  nav {
+    width: 200px;
+  }
+  nav .user i {
+    font-size: 10px;
+  }
+  nav .user h2 {
+    font-size: 20px;
+  }
+  nav .user h3 {
+    font-size: 14px;
+  }
+  nav > ul {
+    padding-top: 10px;
+  }
+  nav > ul > li {
+    padding: 10px 0;
+  }
+  nav > ul > li a,
+  nav > ul > li p {
+    font-size: 16px;
+  }
+  nav > ul > li a i,
+  nav > ul > li p i {
+    font-size: 14px;
+  }
+  nav > ul > li ul.suboption li a,
+  nav > ul > li ul.suboption li p {
+    font-size: 16px;
+  }
+  nav > ul > li ul.suboption li a i,
+  nav > ul > li ul.suboption li p i {
+    font-size: 12px;
+  }
+  main {
+    max-height: calc(100% - 30px);
+  }
+  section.home .inside .notes-content .single.w25 {
+    width: 50%;
+  }
+  section.outside .inside {
+    /*----------Button----------*/
+    /*------------------------------*/
+    /*----------Table----------*/
+    /*------------------------------*/
+  }
+  section.outside.folder.w50 {
+    width: 100%;
+  }
+  section.outside.folder .inside .container.w25,
+  section.outside.folder .inside .container.w12-5 {
+    width: 25%;
+  }
+  section.outside.right {
+    padding-left: 1%;
+    padding-top: 0;
+  }
+  section.outside.right .inside {
+    border-top: 1px dashed #ccc;
+    border-left: none;
+    border-radius: 0 0 20px 20px;
+  }
+  section.outside.left {
+    padding-right: 1%;
+    padding-bottom: 0;
+  }
+  section.outside.left .inside {
+    border-bottom: 1px dashed #ccc;
+    border-right: none;
+    border-radius: 20px 20px 0 0;
+  }
+  section.outside.right-middle {
+    padding: 0 1% 0 1%;
+  }
+  section.outside.right-middle .inside {
+    border-left: none;
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+    border-radius: 0;
+  }
+  section.outside.left-middle {
+    padding: 0 1% 0 1%;
+  }
+  section.outside.left-middle .inside {
+    border-right: none;
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+    border-radius: 0;
+  }
+  section.outside.right-top {
+    padding: 0 1% 0 1%;
+  }
+  section.outside.right-top .inside {
+    border-left: none;
+    border-bottom: 1px dashed #ccc;
+    border-top: 1px dashed #ccc;
+    border-radius: 0;
+  }
+  section.outside.left-top {
+    padding: 1% 1% 0 1%;
+  }
+  section.outside.left-top .inside {
+    border-right: none;
+    border-bottom: 1px dashed #ccc;
+    border-radius: 20px 20px 0 0;
+  }
+  section.outside.right-bottom {
+    padding: 0 1% 1% 1%;
+  }
+  section.outside.right-bottom .inside {
+    border-left: none;
+    border-top: 1px dashed #ccc;
+    border-radius: 0 0 20px 20px;
+  }
+  section.outside.left-bottom {
+    padding: 0 1% 0 1%;
+  }
+  section.outside.left-bottom .inside {
+    border-right: none;
+    border-top: 1px dashed #ccc;
+    border-radius: 0;
+  }
+  section.outside.midle .inside {
+    border-radius: 0;
+  }
+}
+@media screen and (max-width: 640px) {
+  section.home .inside .notes-content .single.w25 {
+    width: 100%;
+  }
+  section.outside .inside {
+    /*----------Button----------*/
+    /*------------------------------*/
+    /*----------Table----------*/
+    /*------------------------------*/
+  }
+  section.outside.folder .inside .container.w25,
+  section.outside.folder .inside .container.w12-5 {
+    width: calc(100% / 3);
+  }
+  aside.container .box .w45,
+  aside.container form .w45,
+  aside.container .box .w40,
+  aside.container form .w40,
+  aside.container .box .w33,
+  aside.container form .w33,
+  aside.container .box .w30,
+  aside.container form .w30,
+  aside.container .box .file-content,
+  aside.container form .file-content {
+    width: 50%;
+  }
+  aside.container .box .w100.barrier,
+  aside.container form .w100.barrier,
+  aside.container .box .w5,
+  aside.container form .w5 {
+    display: none;
+  }
+}
+@media screen and (max-width: 510px) {
+  section.outside .inside {
+    /*----------Button----------*/
+    /*------------------------------*/
+    /*----------Table----------*/
+    /*------------------------------*/
+  }
+  section.outside.folder .inside .container.w25,
+  section.outside.folder .inside .container.w12-5 {
+    width: 50%;
+  }
+  aside.container .box .w50,
+  aside.container form .w50,
+  aside.container .box .w45,
+  aside.container form .w45,
+  aside.container .box .w40,
+  aside.container form .w40,
+  aside.container .box .w33,
+  aside.container form .w33,
+  aside.container .box .w30,
+  aside.container form .w30,
+  aside.container .box .file-content,
+  aside.container form .file-content {
+    width: 100%;
+  }
+}

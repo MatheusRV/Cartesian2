@@ -1,0 +1,86 @@
+/*----------SECTION.HOME----------*/
+section.home .inside {
+  display: flex;
+}
+section.home .inside .map {
+  position: relative;
+  height: 50vh;
+  border-radius: 3px;
+  box-shadow: inset 2px 0px 2px rgba(0, 0, 0, 0.2), inset 0px -2px 2px rgba(0, 0, 0, 0.2), inset 0px 2px 2px rgba(0, 0, 0, 0.2), inset -2px 0px 2px rgba(0, 0, 0, 0.2);
+  background-color: #f0f0f0;
+  display: grid;
+  grid-template: 1fr 1fr 1fr;
+}
+section.home .inside .map span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+section.home .inside .map span i {
+  color: #ff1010;
+  transform: translate(-50%, 50%);
+}
+section.home .inside .controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+section.home .inside .controls .toggle {
+  position: relative;
+  width: 100px;
+  height: 50px;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.15s;
+}
+section.home .inside .controls .toggle span {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+section.home .inside .controls .toggle span:after {
+  content: 'OFF';
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+section.home .inside .controls .toggle.active {
+  background-color: #2bff1c;
+}
+section.home .inside .controls .toggle.active span {
+  transform: translateX(50px);
+}
+section.home .inside .controls .toggle.active span:after {
+  content: 'ON';
+  left: 6px;
+}
+section.home .inside .controls .commands {
+  display: grid;
+  grid-template-columns: [left] 50px [center] 50px [right] 50px;
+  grid-template-rows: [up] 50px [down] 50px;
+  gap: 10px;
+}
+section.home .inside .controls .commands .bt:not(#empty) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+section.home .inside .controls .commands .bt:not(#empty) i {
+  color: #000;
+}
+/*------------------------------*/

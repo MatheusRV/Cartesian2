@@ -35,6 +35,7 @@
                   define('LOGGED_PASSWORD', $info2['password']);
                   define('LOGGED_NAME', $info2['name']);
                   define('LOGGED_OFFICE', $info2['office']);
+                  define('LOGGED_PERMISSION', $info2['permission']);
 
                   $dateTime = date('Y-m-d H:i:s');
 
@@ -95,6 +96,7 @@
                   define('LOGGED_PASSWORD', $info2['password']);
                   define('LOGGED_NAME', $info2['name']);
                   define('LOGGED_OFFICE', $info2['office']);
+                  define('LOGGED_PERMISSION', $info2['permission']);
 
                   $dateTime = date('Y-m-d H:i:s');
 
@@ -282,6 +284,19 @@
 
       header('Location: '.INCLUDE_PATH);
       die();
+    }
+
+    public static function getPermission($page){
+      if(defined('LOGGED_ID2')){
+        $user = Db::selectId('system.users', LOGGED_ID2);
+      }
+      else return 0;
+
+      if($page == 'cartesian') return explode('||', $user['permission'])[0];
+      else if($page == 'points') return explode('||', $user['permission'])[1];
+      else if($page == 'system_users') return explode('||', $user['permission'])[2];
+
+      return 0;
     }
   }
 ?>

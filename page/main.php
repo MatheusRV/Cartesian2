@@ -48,13 +48,17 @@
       <a href="<?= INCLUDE_PATH ?>"><i class="fas fa-home"></i> Home</a>
     </li>
 
-    <li class="<?= $page == 'points' ? 'this-page' : '' ?>">
-      <a href="<?= INCLUDE_PATH ?>"><i class="fas fa-aim"></i> Home</a>
-    </li>
+    <?php if(User::getPermission('points') == 1){?>
+      <li class="<?= $page == 'points' ? 'this-page' : '' ?>">
+        <a href="<?= INCLUDE_PATH ?>"><i class="fas fa-crosshairs"></i> Pontos</a>
+      </li>
+    <?php } ?>
 
+    <?php if(User::getPermission('system_users') == 1){?>
     <li class="<?= $page == 'system_users' ? 'this-page' : '' ?>">
       <a href="<?= INCLUDE_PATH ?>system_users"><i class="fas fa-users-cog"></i> Usuários</a>
     </li>
+    <?php } ?>
   </ul>
 </nav>
 

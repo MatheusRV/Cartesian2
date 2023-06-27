@@ -16,7 +16,7 @@
 
   
   /*----------CONSTANTS----------*/
-  define('INCLUDE_PATH','http://localhost/Projetos/Cartesian/');
+  define('INCLUDE_PATH','http://localhost/Projetos/Cartesian2/');
   define('DIR',__DIR__); /*/
   /*------------------------------*/
 
