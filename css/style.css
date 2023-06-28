@@ -1177,6 +1177,12 @@ aside.container::-webkit-scrollbar-thumb {
   background: #2453c0;
   cursor: pointer;
 }
+aside.container.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 aside.container button.close-form {
   width: 20px;
   height: 20px;
@@ -2465,6 +2471,14 @@ form.new-file label {
 section.home .inside {
   display: flex;
 }
+section.home .inside h1 {
+  display: inline-block;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+section.home .inside h1 i {
+  font-size: 20px;
+}
 section.home .inside .map {
   position: relative;
   height: 50vh;
@@ -2472,17 +2486,17 @@ section.home .inside .map {
   box-shadow: inset 2px 0px 2px rgba(0, 0, 0, 0.2), inset 0px -2px 2px rgba(0, 0, 0, 0.2), inset 0px 2px 2px rgba(0, 0, 0, 0.2), inset -2px 0px 2px rgba(0, 0, 0, 0.2);
   background-color: #f0f0f0;
 }
-section.home .inside .map span {
+section.home .inside .map #point {
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 99;
 }
-section.home .inside .map span i {
+section.home .inside .map #point i {
   color: #ff1010;
   transform: translate(-50%, 50%);
 }
-section.home .inside .map span:after {
+section.home .inside .map #point:after {
   position: absolute;
   top: 0;
   left: 100%;
@@ -2491,11 +2505,11 @@ section.home .inside .map span:after {
   display: inline-block;
   white-space: nowrap;
 }
-section.home .inside .map span.right:after {
-  transform: translateX(-100px);
+section.home .inside .map #point.right:after {
+  left: -100px;
 }
-section.home .inside .map span:hover {
-  cursor: move;
+section.home .inside .map #point.up:after {
+  top: 25px;
 }
 section.home .inside .controls {
   display: flex;
@@ -2615,8 +2629,43 @@ section.home .inside .controls .commands .bt:not(#empty):active {
 }
 /*------------------------------*/
 @media screen and (max-width: 1200px) {
-  section.home .inside .notes-content .single.w25 {
-    width: calc(100% / 3);
+  section.home .inside {
+    display: flex;
+  }
+  section.home .inside .map {
+    position: relative;
+    height: 50vh;
+    border-radius: 3px;
+    box-shadow: inset 2px 0px 2px rgba(0, 0, 0, 0.2), inset 0px -2px 2px rgba(0, 0, 0, 0.2), inset 0px 2px 2px rgba(0, 0, 0, 0.2), inset -2px 0px 2px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+  }
+  section.home .inside .map span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+  }
+  section.home .inside .map span i {
+    color: #ff1010;
+    transform: translate(-50%, 50%);
+  }
+  section.home .inside .map span:after {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    content: '(' attr(data-x) ', ' attr(data-y) ')';
+    font-size: 12px;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  section.home .inside .controls {
+    height: 30vh;
+    width: 100%;
+  }
+  section.home .inside .controls .buttons,
+  section.home .inside .controls .velocity,
+  section.home .inside .controls .commands {
+    width: 100%;
   }
 }
 @media screen and (max-width: 1024px) {

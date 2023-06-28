@@ -2,6 +2,14 @@
 section.home .inside {
   display: flex;
 }
+section.home .inside h1 {
+  display: inline-block;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+section.home .inside h1 i {
+  font-size: 20px;
+}
 section.home .inside .map {
   position: relative;
   height: 50vh;
@@ -9,17 +17,17 @@ section.home .inside .map {
   box-shadow: inset 2px 0px 2px rgba(0, 0, 0, 0.2), inset 0px -2px 2px rgba(0, 0, 0, 0.2), inset 0px 2px 2px rgba(0, 0, 0, 0.2), inset -2px 0px 2px rgba(0, 0, 0, 0.2);
   background-color: #f0f0f0;
 }
-section.home .inside .map span {
+section.home .inside .map #point {
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 99;
 }
-section.home .inside .map span i {
+section.home .inside .map #point i {
   color: #ff1010;
   transform: translate(-50%, 50%);
 }
-section.home .inside .map span:after {
+section.home .inside .map #point:after {
   position: absolute;
   top: 0;
   left: 100%;
@@ -28,11 +36,11 @@ section.home .inside .map span:after {
   display: inline-block;
   white-space: nowrap;
 }
-section.home .inside .map span.right:after {
-  transform: translateX(-100px);
+section.home .inside .map #point.right:after {
+  left: -100px;
 }
-section.home .inside .map span:hover {
-  cursor: move;
+section.home .inside .map #point.up:after {
+  top: 25px;
 }
 section.home .inside .controls {
   display: flex;

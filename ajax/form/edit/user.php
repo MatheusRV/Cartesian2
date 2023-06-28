@@ -106,70 +106,21 @@
           if($access[0] == 1){
             $data['result'] .= '<div class="w33 padding group-checkbox">';
             $data['result'] .= $getPermission[0] == 1 ? '<input type="checkbox" name="permission0" id="permission0'.$value['id'].'" checked>' : '<input type="checkbox" name="permission0" id="permission0'.$value['id'].'">';
-            $data['result'] .= '<label for="permission0'.$value['id'].'"><i class="fas fa-folder-open"></i> Arquivos</label>
+            $data['result'] .= '<label for="permission0'.$value['id'].'"><i class="fas fa-home"></i> Home</label>
                 </div><!--width-->';
           }
           
           if($access[1] == 1){
             $data['result'] .= '<div class="w33 padding group-checkbox">';
             $data['result'] .= $getPermission[1] == 1 ? '<input type="checkbox" name="permission1" id="permission1'.$value['id'].'" checked>' : '<input type="checkbox" name="permission1" id="permission1'.$value['id'].'">';
-            $data['result'] .= '<label for="permission1'.$value['id'].'"><i class="fas fa-users-cog"></i> Usuários</label>
+            $data['result'] .= '<label for="permission1'.$value['id'].'"><i class="fas fa-crosshairs"></i> Pontos</label>
                 </div><!--width-->';
           }
           
           if($access[2] == 1){
             $data['result'] .= '<div class="w33 padding group-checkbox">';
             $data['result'] .= $getPermission[2] == 1 ? '<input type="checkbox" name="permission2" id="permission2'.$value['id'].'" checked>' : '<input type="checkbox" name="permission2" id="permission2'.$value['id'].'">';
-            $data['result'] .= '<label for="permission2'.$value['id'].'"><i class="fas fa-user-friends"></i> Contatos</label>
-                </div><!--width-->';
-          }
-          
-          if($access[3] == 1){
-            $data['result'] .= '<div class="w33 padding group-checkbox">';
-            $data['result'] .= $getPermission[3] == 1 ? '<input type="checkbox" name="permission3" id="permission3'.$value['id'].'" checked>' : '<input type="checkbox" name="permission3" id="permission3'.$value['id'].'">';
-            $data['result'] .= '<label for="permission3'.$value['id'].'"><i class="fas fa-comments-dollar"></i> Vendas</label>
-                </div><!--width-->';
-          }
-          
-          if($access[4] == 1){
-            $data['result'] .= '<div class="w33 padding group-checkbox">';
-            $data['result'] .= $getPermission[4] == 1 ? '<input type="checkbox" name="permission4" id="permission4'.$value['id'].'" checked>' : '<input type="checkbox" name="permission4" id="permission4'.$value['id'].'">';
-            $data['result'] .= '<label for="permission4'.$value['id'].'"><i class="fas fa-shopping-cart"></i> Compras</label>
-                </div><!--width-->';
-          }
-          
-          if($access[5] == 1){
-            $data['result'] .= '<div class="w33 padding group-checkbox">';
-            $data['result'] .= $getPermission[5] == 1 ? '<input type="checkbox" name="permission5" id="permission5'.$value['id'].'" checked>' : '<input type="checkbox" name="permission5" id="permission5'.$value['id'].'">';
-            $data['result'] .= '<label for="permission5'.$value['id'].'"><i class="far fa-file-alt"></i> Projetos</label>
-                </div><!--width-->';
-          }
-          
-          if($access[6] == 1){
-            $data['result'] .= '<div class="w33 padding group-checkbox">';
-            $data['result'] .= $getPermission[6] == 1 ? '<input type="checkbox" name="permission6" id="permission6'.$value['id'].'" checked>' : '<input type="checkbox" name="permission6" id="permission6'.$value['id'].'">';
-            $data['result'] .= '<label for="permission6'.$value['id'].'"><i class="fas fa-toolbox"></i> Operacional</label>
-                </div><!--width-->';
-          }
-          
-          if($access[7] == 1){
-            $data['result'] .= '<div class="w33 padding group-checkbox">';
-            $data['result'] .= $getPermission[7] == 1 ? '<input type="checkbox" name="permission7" id="permission7'.$value['id'].'" checked>' : '<input type="checkbox" name="permission7" id="permission7'.$value['id'].'">';
-            $data['result'] .= '<label for="permission7'.$value['id'].'"><i class="fas fa-cash-register"></i> Contas a Pagar</label>
-                </div><!--width-->';
-          }
-          
-          if($access[8] == 1){
-            $data['result'] .= '<div class="w33 padding group-checkbox">';
-            $data['result'] .= $getPermission[8] == 1 ? '<input type="checkbox" name="permission8" id="permission8'.$value['id'].'" checked>' : '<input type="checkbox" name="permission8" id="permission8'.$value['id'].'">';
-            $data['result'] .= '<label for="permission8'.$value['id'].'"><i class="far fa-comment-dots"></i> Recados</label>
-                </div><!--width-->';
-          }
-
-          if($access[9] == 1){
-            $data['result'] .= '<div class="w33 padding group-checkbox">';
-            $data['result'] .= $getPermission[9] == 1 ? '<input type="checkbox" name="permission9" id="permission9'.$value['id'].'" checked>' : '<input type="checkbox" name="permission9" id="permission9'.$value['id'].'">';
-            $data['result'] .= '<label for="permission9'.$value['id'].'"><i class="fas fa-calculator"></i> Orçamentos</label>
+            $data['result'] .= '<label for="permission2'.$value['id'].'"><i class="fas fa-users-cog"></i> Usuários</label>
                 </div><!--width-->';
           }
           

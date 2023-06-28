@@ -66,16 +66,9 @@
 
           $data['result'] .= '<div class="parcial-permissions2">';
 
-          $data['result'] .= $getPermission[0] == 1 ? '<p><i class="fas fa-folder-open"></i> Arquivos</p>' : '';
-          $data['result'] .= $getPermission[1] == 1 ? '<p><i class="fas fa-users-cog"></i> Usuários</p>' : '';
-          $data['result'] .= $getPermission[2] == 1 ? '<p><i class="fas fa-user-friends"></i> Contatos</p>' : '';
-          $data['result'] .= $getPermission[3] == 1 ? '<p><i class="fas fa-comments-dollar"></i> Vendas</p>' : '';
-          $data['result'] .= $getPermission[4] == 1 ? '<p><i class="fas fa-shopping-cart"></i> Compras</p>' : '';
-          $data['result'] .= $getPermission[5] == 1 ? '<p><i class="far fa-file-alt"></i> Projetos</p>' : '';
-          $data['result'] .= $getPermission[6] == 1 ? '<p><i class="fas fa-toolbox"></i> Operacional</p>' : '';
-          $data['result'] .= $getPermission[9] == 1 ? '<p><i class="fas fa-calculator"></i> Orçamentos</p>' : '';
-          $data['result'] .= $getPermission[7] == 1 ? '<p><i class="fas fa-cash-register"></i> Contas a Pagar</p>' : '';
-          $data['result'] .= $getPermission[8] == 1 ? '<p><i class="far fa-comment-dots"></i> Recados</p>' : '';
+          $data['result'] .= $getPermission[0] == 1 ? '<p><i class="fas fa-home"></i> Home</p>' : '';
+          $data['result'] .= $getPermission[1] == 1 ? '<p><i class="fas fa-crosshairs"></i> Pontos</p>' : '';
+          $data['result'] .= $getPermission[2] == 1 ? '<p><i class="fas fa-users-cog"></i> Usuários</p>' : '';
 
           $data['result'] .= '</div><!--parcial-permissions-->';
         }

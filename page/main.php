@@ -50,7 +50,7 @@
 
     <?php if(User::getPermission('points') == 1){?>
       <li class="<?= $page == 'points' ? 'this-page' : '' ?>">
-        <a href="<?= INCLUDE_PATH ?>"><i class="fas fa-crosshairs"></i> Pontos</a>
+        <a href="<?= INCLUDE_PATH ?>points"><i class="fas fa-crosshairs"></i> Pontos</a>
       </li>
     <?php } ?>
 

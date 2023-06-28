@@ -40,7 +40,7 @@
       <div class="buttons">
         <div class="reset"><img src="file/svg/arrow-rotate-left-solid.svg"></div>
         <div class="toggle"><span></span></div>
-        <div class="add-point" title="Registrar ponto"><img src="file/svg/plus-solid.svg"></div>
+        <?php if(User::getPermission('points') == 1){?><div class="add-point" title="Registrar ponto"><img src="file/svg/plus-solid.svg"></div><?php } ?>
       </div>
       <div class="velocity">
         <span class="vel" id="cent">0.01</span>

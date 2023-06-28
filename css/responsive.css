@@ -1,6 +1,41 @@
 @media screen and (max-width: 1200px) {
-  section.home .inside .notes-content .single.w25 {
-    width: calc(100% / 3);
+  section.home .inside {
+    display: flex;
+  }
+  section.home .inside .map {
+    position: relative;
+    height: 50vh;
+    border-radius: 3px;
+    box-shadow: inset 2px 0px 2px rgba(0, 0, 0, 0.2), inset 0px -2px 2px rgba(0, 0, 0, 0.2), inset 0px 2px 2px rgba(0, 0, 0, 0.2), inset -2px 0px 2px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+  }
+  section.home .inside .map span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+  }
+  section.home .inside .map span i {
+    color: #ff1010;
+    transform: translate(-50%, 50%);
+  }
+  section.home .inside .map span:after {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    content: '(' attr(data-x) ', ' attr(data-y) ')';
+    font-size: 12px;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  section.home .inside .controls {
+    height: 30vh;
+    width: 100%;
+  }
+  section.home .inside .controls .buttons,
+  section.home .inside .controls .velocity,
+  section.home .inside .controls .commands {
+    width: 100%;
   }
 }
 @media screen and (max-width: 1024px) {

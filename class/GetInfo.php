@@ -132,5 +132,55 @@
 
       return $info;
     }
+
+    public static function points($p, $edit = false){
+      $info = [];
+
+      $key = 'id_user';
+      if($edit){ $info[$key] = LOGGED_ID2; }
+      else{ $info[] = LOGGED_ID2; }
+
+      $key = 'name';
+      if(isset($p[$key]) && $p[$key] != ''){
+        if($edit){ $info[$key] = $p[$key]; }
+        else{ $info[] = $p[$key]; }
+      }
+      else return 'Digite um nome para o ponto';
+
+      $key = 'x';
+      if(isset($p[$key]) && $p[$key] != ''){
+        $p[$key] = str_replace(".","",$p[$key]);
+        $p[$key] = strtr($p[$key], ",", ".");
+        $p[$key] = number_format($p[$key], 2, '.', '');
+        
+        if($edit){ $info[$key] = $p[$key]; }
+        else{ $info[] = $p[$key]; }
+      }
+      else return 'Digite um valor válido para X.';
+
+      $key = 'y';
+      if(isset($p[$key]) && $p[$key] != ''){
+        $p[$key] = str_replace(".","",$p[$key]);
+        $p[$key] = strtr($p[$key], ",", ".");
+        $p[$key] = number_format($p[$key], 2, '.', '');
+        
+        if($edit){ $info[$key] = $p[$key]; }
+        else{ $info[] = $p[$key]; }
+      }
+      else return 'Digite um valor válido para Y.';
+
+      if($edit){
+        $info['last_att'] = date('Y-m-d H:i:s');
+        $info['user_last_att'] = LOGGED_ID2;
+        $info['id'] = $p['id']; 
+      }
+      else{
+        $info[] = date('Y-m-d H:i:s');
+        $info[] = LOGGED_ID2;
+        $info[] = 0; 
+      }
+
+      return $info;
+    }
   }
 ?>
