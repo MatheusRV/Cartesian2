@@ -8,17 +8,28 @@ section.home .inside .map {
   border-radius: 3px;
   box-shadow: inset 2px 0px 2px rgba(0, 0, 0, 0.2), inset 0px -2px 2px rgba(0, 0, 0, 0.2), inset 0px 2px 2px rgba(0, 0, 0, 0.2), inset -2px 0px 2px rgba(0, 0, 0, 0.2);
   background-color: #f0f0f0;
-  display: grid;
-  grid-template: 1fr 1fr 1fr;
 }
 section.home .inside .map span {
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 999;
 }
 section.home .inside .map span i {
   color: #ff1010;
   transform: translate(-50%, 50%);
+}
+section.home .inside .map span:after {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  content: '(' attr(data-x) ', ' attr(data-y) ')';
+  font-size: 12px;
+  display: inline-block;
+  white-space: nowrap;
+}
+section.home .inside .map span.right:after {
+  transform: translateX(-100px);
 }
 section.home .inside .controls {
   display: flex;
@@ -26,7 +37,34 @@ section.home .inside .controls {
   justify-content: space-around;
   align-items: center;
 }
-section.home .inside .controls .toggle {
+section.home .inside .controls .buttons {
+  width: 70%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+section.home .inside .controls .buttons .reset,
+section.home .inside .controls .buttons .add-point {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  background-color: #f0f0f0;
+}
+section.home .inside .controls .buttons .reset img,
+section.home .inside .controls .buttons .add-point img {
+  width: 50%;
+  height: 50%;
+}
+section.home .inside .controls .buttons .reset:active,
+section.home .inside .controls .buttons .add-point:active {
+  background-color: #2bff1c;
+}
+section.home .inside .controls .buttons .toggle {
   position: relative;
   width: 100px;
   height: 50px;
@@ -35,7 +73,7 @@ section.home .inside .controls .toggle {
   box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.4);
   transition: 0.15s;
 }
-section.home .inside .controls .toggle span {
+section.home .inside .controls .buttons .toggle span {
   position: absolute;
   top: 5px;
   left: 5px;
@@ -46,26 +84,47 @@ section.home .inside .controls .toggle span {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   transition: 0.3s;
 }
-section.home .inside .controls .toggle span:after {
+section.home .inside .controls .buttons .toggle span:after {
   content: 'OFF';
   position: absolute;
   top: 10px;
   left: 5px;
 }
-section.home .inside .controls .toggle.active {
+section.home .inside .controls .buttons .toggle.active {
   background-color: #2bff1c;
 }
-section.home .inside .controls .toggle.active span {
+section.home .inside .controls .buttons .toggle.active span {
   transform: translateX(50px);
 }
-section.home .inside .controls .toggle.active span:after {
+section.home .inside .controls .buttons .toggle.active span:after {
   content: 'ON';
   left: 6px;
 }
+section.home .inside .controls .velocity {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+section.home .inside .controls .velocity .vel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 15%;
+  aspect-ratio: 1;
+  font-size: 20px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+section.home .inside .controls .velocity .vel.active {
+  background-color: #2bff1c;
+}
 section.home .inside .controls .commands {
   display: grid;
-  grid-template-columns: [left] 50px [center] 50px [right] 50px;
-  grid-template-rows: [up] 50px [down] 50px;
+  grid-template-columns: [left] 80px [center] 80px [right] 80px;
+  grid-template-rows: [up] 80px [down] 80px;
   gap: 10px;
 }
 section.home .inside .controls .commands .bt:not(#empty) {
@@ -74,13 +133,18 @@ section.home .inside .controls .commands .bt:not(#empty) {
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border-radius: 8px;
   background-color: #f0f0f0;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: 0.2s;
 }
 section.home .inside .controls .commands .bt:not(#empty) i {
   color: #000;
+}
+section.home .inside .controls .commands .bt:not(#empty):active {
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 /*------------------------------*/

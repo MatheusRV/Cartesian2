@@ -3,6 +3,14 @@
     $name_page = 'cartesian';
     $name_table = 'cartesian.data';
     $name_post = 'cartesian';
+
+    $startP = MySql::connect()->prepare("SELECT * FROM `position.data` WHERE id = 1");
+    if($startP->execute() && $startP->rowCount() == 1){
+      $startP = $startP->fetch();
+    }
+    else{
+      $startP = ['x' => 0, 'y' => 0];
+    }
   /*------------------------------*/
 
 
@@ -26,11 +34,20 @@
 <section class="outside w100 home">
   <div class="inside">
     <div class="w70 map">
-      <span id="point"><i class="fas fa-crosshairs"></i></span>
+      <span id="point" style="bottom: <?=$startP['y']?>%; left: <?=$startP['x']?>%"data-x="<?=$startP['x']?>%" data-y="<?=$startP['y']?>%"><i class="fas fa-crosshairs"></i></span>
     </div>
     <div class="w30 controls flex">
-      <div class="toggle">
-        <span></span>
+      <div class="buttons">
+        <div class="reset"><img src="file/svg/arrow-rotate-left-solid.svg"></div>
+        <div class="toggle"><span></span></div>
+        <div class="add-point" title="Registrar ponto"><img src="file/svg/plus-solid.svg"></div>
+      </div>
+      <div class="velocity">
+        <span class="vel" id="cent">0.01</span>
+        <span class="vel" id="dec">0.1</span>
+        <span class="vel active" id="un">1</span>
+        <span class="vel" id="five">5</span>
+        <span class="vel" id="ten">10</span>
       </div>
       <div class="commands">
         <span class="bt" id="empty"></span>
