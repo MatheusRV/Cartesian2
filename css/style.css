@@ -86,7 +86,7 @@ header {
   padding: 5px 2%;
   display: flex;
   justify-content: space-between;
-  background: #337ab7;
+  background: #21396e;
 }
 header i {
   margin-top: 2px;
@@ -96,7 +96,7 @@ header i {
   cursor: pointer;
 }
 header i:hover {
-  color: #9fd44e;
+  color: #e74c3c;
 }
 header a {
   color: white;
@@ -108,10 +108,10 @@ header a span {
   line-height: 30px;
 }
 header a:hover {
-  color: #9fd44e;
+  color: #e74c3c;
 }
 header a:hover i {
-  color: #9fd44e;
+  color: #e74c3c;
 }
 header .logo {
   width: 130px;
@@ -134,7 +134,7 @@ nav {
   overflow-y: auto;
   text-align: center;
   color: white;
-  background: #337ab7;
+  background: #21396e;
 }
 nav::-webkit-scrollbar-track {
   background-color: rgba(36, 83, 192, 0.1);
@@ -151,7 +151,7 @@ nav::-webkit-scrollbar-thumb {
 nav .user {
   padding: 5% 2%;
   position: relative;
-  border-bottom: 1px solid #9fd44e;
+  border-bottom: 1px solid #e74c3c;
 }
 nav .user i {
   position: absolute;
@@ -161,7 +161,7 @@ nav .user i {
   cursor: pointer;
 }
 nav .user i:hover {
-  color: #9fd44e;
+  color: #e74c3c;
 }
 nav .user h2 {
   font-size: 24px;
@@ -199,7 +199,7 @@ nav > ul > li p:hover {
 }
 nav > ul > li a:hover i,
 nav > ul > li p:hover i {
-  color: #9fd44e;
+  color: #e74c3c;
 }
 nav > ul > li.this-page a,
 nav > ul > li.opened p,
@@ -209,7 +209,7 @@ nav > ul > li.fixed p {
 nav > ul > li.this-page a i,
 nav > ul > li.opened p i,
 nav > ul > li.fixed p i {
-  color: #9fd44e;
+  color: #e74c3c;
 }
 nav > ul > li.this-page a i.fa-chevron-down,
 nav > ul > li.opened p i.fa-chevron-down,
@@ -2476,7 +2476,7 @@ section.home .inside .map span {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 999;
+  z-index: 99;
 }
 section.home .inside .map span i {
   color: #ff1010;
@@ -2493,6 +2493,9 @@ section.home .inside .map span:after {
 }
 section.home .inside .map span.right:after {
   transform: translateX(-100px);
+}
+section.home .inside .map span:hover {
+  cursor: move;
 }
 section.home .inside .controls {
   display: flex;

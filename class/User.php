@@ -1,14 +1,11 @@
 <?php
   class User{
-    public static $office = ['0' => 'Administrador Geral',
-    '10' => 'Sócio',
-    '20' => 'Funcionário',
-    '30' => 'Vendas',
-    '40' => 'Compras',
-    '50' => 'Projetos',
-    '60' => 'Operacional',
-    '80' => 'Financeiro',
-    '90' => 'Estagiário'];
+    public static $office = [
+      '0' => 'Administrador',
+      '10' => 'Engenheiro',
+      '20' => 'Funcionário',
+      '30' => 'Estagiário'
+    ];
 
     public static function logged(){
       if(isset($_SESSION)){

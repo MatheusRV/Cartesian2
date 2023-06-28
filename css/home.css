@@ -13,7 +13,7 @@ section.home .inside .map span {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 999;
+  z-index: 99;
 }
 section.home .inside .map span i {
   color: #ff1010;
@@ -30,6 +30,9 @@ section.home .inside .map span:after {
 }
 section.home .inside .map span.right:after {
   transform: translateX(-100px);
+}
+section.home .inside .map span:hover {
+  cursor: move;
 }
 section.home .inside .controls {
   display: flex;

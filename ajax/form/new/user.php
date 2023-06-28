@@ -6,7 +6,7 @@
   $data['reload'] = false;
   $permission = User::getPermission('system_users');
 
-  if(!isset($_SESSION['verify_authentication_indusol_key']) || !password_verify('indusol_'.date('Y-m-d').'_show_demais', $_SESSION['verify_authentication_indusol_key'])){
+  if(!isset($_SESSION['verify_authentication_cartesian_key']) || !password_verify('cartesian_'.date('Y-m-d').'_login', $_SESSION['verify_authentication_cartesian_key'])){
     $data['reload'] = true;
     die(json_encode($data));
   }
@@ -66,52 +66,17 @@
   
   $data['result'] .= $access[0] == 1 ? '<div class="w33 padding group-checkbox">
           <input type="checkbox" name="permission0" id="permission0">
-          <label for="permission0"><i class="fas fa-folder-open"></i> Arquivos</label>
+          <label for="permission0"><i class="fas fa-home"></i> Home</label>
         </div><!--width-->' : '';
 
   $data['result'] .= $access[1] == 1 ? '<div class="w33 padding group-checkbox">
           <input type="checkbox" name="permission1" id="permission1">
-          <label for="permission1"><i class="fas fa-users-cog"></i> Usuários</label>
+          <label for="permission1"><i class="fas fa-crosshairs"></i> Pontos</label>
         </div><!--width-->' : '';
 
   $data['result'] .= $access[2] == 1 ? '<div class="w33 padding group-checkbox">
           <input type="checkbox" name="permission2" id="permission2">
-          <label for="permission2"><i class="fas fa-user-friends"></i> Contatos</label>
-        </div><!--width-->' : '';
-
-  $data['result'] .= $access[3] == 1 ? '<div class="w33 padding group-checkbox">
-          <input type="checkbox" name="permission3" id="permission3">
-          <label for="permission3"><i class="fas fa-comments-dollar"></i> Vendas</label>
-        </div><!--width-->' : '';
-
-  $data['result'] .= $access[4] == 1 ? '<div class="w33 padding group-checkbox">
-          <input type="checkbox" name="permission4" id="permission4">
-          <label for="permission4"><i class="fas fa-shopping-cart"></i> Compras</label>
-        </div><!--width-->' : '';
-
-  $data['result'] .= $access[5] == 1 ? '<div class="w33 padding group-checkbox">
-          <input type="checkbox" name="permission5" id="permission5">
-          <label for="permission5"><i class="far fa-file-alt"></i> Projetos</label>
-        </div><!--width-->' : '';
-
-  $data['result'] .= $access[6] == 1 ? '<div class="w33 padding group-checkbox">
-          <input type="checkbox" name="permission6" id="permission6">
-          <label for="permission6"><i class="fas fa-toolbox"></i> Operacional</label>
-        </div><!--width-->' : '';
-
-  $data['result'] .= $access[7] == 1 ? '<div class="w33 padding group-checkbox">
-          <input type="checkbox" name="permission7" id="permission7">
-          <label for="permission7"><i class="fas fa-cash-register"></i> Contas a Pagar</label>
-        </div><!--width-->' : '';
-
-  $data['result'] .= $access[8] == 1 ? '<div class="w33 padding group-checkbox">
-          <input type="checkbox" name="permission8" id="permission8">
-          <label for="permission8"><i class="far fa-comment-dots"></i> Recados</label>
-        </div><!--width-->' : '';
-
-  $data['result'] .= $access[9] == 1 ? '<div class="w33 padding group-checkbox">
-          <input type="checkbox" name="permission9" id="permission9">
-          <label for="permission9"><i class="fas fa-calculator"></i> Orçamentos</label>
+          <label for="permission2"><i class="fas fa-users-cog"></i> Usuários</label>
         </div><!--width-->' : '';
 
   $data['result'] .= '</div><!--parcial-permissions-->

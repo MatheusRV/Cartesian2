@@ -3,7 +3,8 @@
     public static $relation = [
       '0' => 'Administrador',
       '10' => 'Engenheiro',
-      '20' => 'Funcionário'
+      '20' => 'Funcionário',
+      '30' => 'Estagiário'
     ];
 
     public static $generalPermission = [ 

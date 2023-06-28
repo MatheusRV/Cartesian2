@@ -13,7 +13,6 @@ $(function(){
       else if(action == 'up' || action == 'down'){ topic = 'y'; }
       else topic = '';
 
-      publish(topic, qtd);
       move(topic, qtd);
     });
 
@@ -37,31 +36,43 @@ $(function(){
       }
     });
 
-    $(".map #point").draggable({
-      cursor: 'move',
-      snap: 'inner',
-      containment: [$('.map').offset().left, $('.map').offset().top - 19.2, $('.map').offset().left + $('.map').width(), $('.map').offset().top + $('.map').height() - 19.2],
-      drag: function(ev, ui){
-        var coordX = Math.round( ((ui.position.left/$('.map').width())*100) * 100) / 100;
-        var coordY = (1 - ((ui.position.top+19.2)/$('.map').height())) * 100;
-        setLabel((Math.round(coordX * 100)/100), (Math.round(coordY * 100)/100));
-      },
-      stop: function(ev, ui){
-        var coordX = Math.round( ((ui.position.left/$('.map').width())*100) * 100) / 100;
-        var coordY = (1 - ((ui.position.top+19.2)/$('.map').height())) * 100;
-        if(coordX >= 0 && coordX <= 100 && coordY >= 0 && coordY <= 100){ setPosition(coordX, coordY); }
-      }
-    });
+    $(window).ready(function(){
+      if($(".map #point").length > 0){
+        $(".map #point").draggable({
+          cursor: 'move',
+          snap: 'inner',
+          containment: [$('.map').offset().left, $('.map').offset().top - 19.2, $('.map').offset().left + $('.map').width(), $('.map').offset().top + $('.map').height() - 19.2],
+          drag: function(ev, ui){
+            var coordX = Math.round( ((ui.position.left/$('.map').width())*100) * 100) / 100;
+            var coordY = (1 - ((ui.position.top+19.2)/$('.map').height())) * 100;
+            setLabel((Math.round(coordX * 100)/100), (Math.round(coordY * 100)/100));
+          },
+          stop: function(ev, ui){
+            var coordX = Math.round( ((ui.position.left/$('.map').width())*100) * 100) / 100;
+            var coordY = (1 - ((ui.position.top+19.2)/$('.map').height())) * 100;
+            if(coordX >= 0 && coordX <= 100 && coordY >= 0 && coordY <= 100){ setPosition((Math.round(coordX * 100)/100), (Math.round(coordY * 100)/100)); }
+          }
+        });
 
-    $(window).resize(function(){
-      $(".map #point").draggable("option", "containment", [$('.map').offset().left, $('.map').offset().top - 19.2, $('.map').offset().left + $('.map').width(), $('.map').offset().top + $('.map').height() - 19.2]);
+        $(window).resize(function(){
+          $(".map #point").draggable("option", "containment", [$('.map').offset().left, $('.map').offset().top - 19.2, $('.map').offset().left + $('.map').width(), $('.map').offset().top + $('.map').height() - 19.2]);
+        });
+      }
     });
   /*------------------------------------------*/
 
 
   /*-----------------MQTT----------------*/
+    function delay(time) {
+      var d1 = new Date();
+      var d2 = new Date();
+      while (d2.valueOf() < d1.valueOf() + time) {
+        d2 = new Date();
+      }
+    }
+
     function publish(topic, message){
-      var post = {topic: 'Embarcados/'+topic, message: message};
+      var post = {topic: 'cartesian/'+topic, message: message};
       $.ajax({
         beforeSend:function(){ $('body').css('cursor', 'wait');},
         url: 'ajax/mqtt/publish.php',
@@ -77,10 +88,27 @@ $(function(){
         else{
           console.log('Error');
         }
+      });/**/
+    }
+
+    function att(){
+      var {x, y} = getPosition();
+      var post = {x: x, y: y};
+      $.ajax({
+        beforeSend:function(){ $('body').css('cursor', 'wait');},
+        url: 'ajax/submit/position.php',
+        type: 'POST',
+        dataType: 'json',
+        data: post
+      }).done(function(data){
+        $('body').css('cursor', 'initial');
       }).fail(function(data){
         $('body').css('cursor', 'initial');
-        console.log("Erro ao enviar requisição.");
+        console.log("Erro ao atualizar banco de dados.");
       });/**/
+      publish('x', x);
+      delay(10);
+      publish('y', y);
     }
   /*------------------------------------------*/
 
@@ -89,6 +117,7 @@ $(function(){
     function setPosition(x, y){
       $('.map #point').attr('style', 'bottom: '+y+'%; left: '+x+'%;');
       setLabel((Math.round(x * 100)/100), (Math.round(y * 100)/100));
+      att();
     }
 
     function move(axis, qtd){
@@ -101,11 +130,11 @@ $(function(){
 
       $('.map #point').attr('style', 'bottom: '+y+'%; left: '+x+'%;');
       setLabel(x,y);
+      att();
     }
 
     function resetPosition(){
-      $('.map #point').attr('style', 'bottom: 0%; left: 0%;');
-      setLabel(0,0);
+      setPosition(0,0);
     }
 
     function setLabel(x, y){

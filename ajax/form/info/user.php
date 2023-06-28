@@ -6,7 +6,7 @@
   $data['reload'] = false;
   $permission = User::getPermission('system_users');
 
-  if(!isset($_SESSION['verify_authentication_indusol_key']) || !password_verify('indusol_'.date('Y-m-d').'_show_demais', $_SESSION['verify_authentication_indusol_key'])){
+  if(!isset($_SESSION['verify_authentication_cartesian_key']) || !password_verify('cartesian_'.date('Y-m-d').'_login', $_SESSION['verify_authentication_cartesian_key'])){
     $data['reload'] = true;
     die(json_encode($data));
   }
