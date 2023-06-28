@@ -125,6 +125,35 @@ $(function(){
       setPosition(0,0);
     });
 
+    $('body').on('click', '.controls .buttons .add-point', function(e){
+      e.stopPropagation();
+      var el = $(this);
+      var post = getPosition();
+      post.forward = 1;
+
+      $.ajax({
+        beforeSend:function(){ $('article.message-load').fadeIn(100); $('body').css('cursor', 'wait');},
+        url: 'ajax/form/new/points.php',
+        type: 'POST',
+        dataType: 'json',
+        data: post
+      }).done(function(data){
+        $('article.message-load').fadeOut(100); 
+        $('body').css('cursor', 'initial');
+
+        if(data.success){
+          $('section.form').append(data.result);
+
+          $('.'+data.form).fadeIn(300);
+        }
+        else if(data.reload){
+          location.reload();
+        }
+        else{
+          console.log('Error');
+        }
+      });/**/
+    });
     $('body').on('click', '.controls .velocity .vel', function(e){
       var el = $(this);
       if(el.hasClass('active')){ el.toggleClass('active'); }
@@ -165,25 +194,27 @@ $(function(){
         });
 
         $(document).on('keydown', function(e){
-          if(e.keyCode == 37 || e.keyCode == 65){ move('x', -($('.controls .velocity .vel.active').text())); } //arrow left
-          else if(e.keyCode == 38 || e.keyCode == 87){ move('y', ($('.controls .velocity .vel.active').text())); } //arrow up
-          else if(e.keyCode == 39 || e.keyCode == 68){ move('x', ($('.controls .velocity .vel.active').text())); } //arrow right
-          else if(e.keyCode == 40 || e.keyCode == 83){ move('y', -($('.controls .velocity .vel.active').text())); } //arrow down
-          else if(e.keyCode == 74){ $('.controls .buttons .toggle').toggleClass('active'); } // r
-          else if(e.keyCode == 82){ resetPosition(); } // r
-          else if(e.keyCode == 70){ finalPosition(); } // r
-          else if(e.keyCode == 107){  // +
-            var i = $('.controls .velocity .vel.active').index();
-            if(i < ($('.controls .velocity .vel').length)-1){
-              $('.controls .velocity .vel').eq(i).removeClass('active');
-              $('.controls .velocity .vel').eq(i+1).addClass('active');
+          if($('section.home').length == 1 && $('aside:visible').length == 0){
+            if(e.keyCode == 37 || e.keyCode == 65){ move('x', -($('.controls .velocity .vel.active').text())); } //arrow left
+            else if(e.keyCode == 38 || e.keyCode == 87){ move('y', ($('.controls .velocity .vel.active').text())); } //arrow up
+            else if(e.keyCode == 39 || e.keyCode == 68){ move('x', ($('.controls .velocity .vel.active').text())); } //arrow right
+            else if(e.keyCode == 40 || e.keyCode == 83){ move('y', -($('.controls .velocity .vel.active').text())); } //arrow down
+            else if(e.keyCode == 74){ $('.controls .buttons .toggle').toggleClass('active'); } // r
+            else if(e.keyCode == 82){ resetPosition(); } // r
+            else if(e.keyCode == 70){ finalPosition(); } // r
+            else if(e.keyCode == 107){  // +
+              var i = $('.controls .velocity .vel.active').index();
+              if(i < ($('.controls .velocity .vel').length)-1){
+                $('.controls .velocity .vel').eq(i).removeClass('active');
+                $('.controls .velocity .vel').eq(i+1).addClass('active');
+              }
             }
-          }
-          else if(e.keyCode == 109){  // +
-            var i = $('.controls .velocity .vel.active').index();
-            if(i > 0){
-              $('.controls .velocity .vel').eq(i).removeClass('active');
-              $('.controls .velocity .vel').eq(i-1).addClass('active');
+            else if(e.keyCode == 109){  // +
+              var i = $('.controls .velocity .vel.active').index();
+              if(i > 0){
+                $('.controls .velocity .vel').eq(i).removeClass('active');
+                $('.controls .velocity .vel').eq(i-1).addClass('active');
+              }
             }
           }
         })

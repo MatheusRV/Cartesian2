@@ -31,14 +31,26 @@
         </div><!--w100-->
 
         <div class="w50 padding">
-          <label>X:<b class="required">*</b></label>
-          <input class="money" type="text" name="x" placeholder="Ex: 10,00" required autocomplete="off">
-        </div><!--w50-->
+          <label>X:<b class="required">*</b></label>';
+          if(isset($p['forward'])){
+            $data['result'] .= '<input class="money" type="text" name="x" value="'.number_format($p['x'],2,',','.').'" placeholder="Ex: 10,00" required autocomplete="off" disabled>
+              <input type="hidden" name="x" value="'.number_format($p['x'],2,',','.').'">';
+          }
+          else{
+            $data['result'] .= '<input class="money" type="text" name="x" placeholder="Ex: 10,00" required autocomplete="off">';
+          }
+        $data['result'] .= '</div><!--w50-->
 
         <div class="w50 padding">
-          <label>Y:<b class="required">*</b></label>
-          <input class="money" type="text" name="y" placeholder="Ex: 10,00" required autocomplete="off">
-        </div><!--w50-->
+          <label>Y:<b class="required">*</b></label>';
+          if(isset($p['forward'])){
+            $data['result'] .= '<input class="money" type="text" name="y" value="'.number_format($p['y'],2,',','.').'" placeholder="Ex: 10,00" required autocomplete="off" disabled>
+              <input type="hidden" name="y" value="'.number_format($p['x'],2,',','.').'">';
+          }
+          else{
+            $data['result'] .= '<input class="money" type="text" name="y" placeholder="Ex: 10,00" required autocomplete="off">';
+          }
+        $data['result'] .= '</div><!--w50-->
 
       </div><!--flex-->
 

@@ -141,17 +141,6 @@ $(function(){
       getForm(post, 'new/financial', el);
     });
 
-    $('body').on('click', 'button.forward-budget', function(e){
-      e.stopPropagation();
-      var el = $(this);
-
-      var post = { forward: 1,
-        id_client: el.attr('id_client'),
-        id: el.attr('id') }
-
-      getForm(post, 'new/sale', el);
-    });
-
     $('body').on('click', 'button.inline', function(e){
       e.stopPropagation();
       var el = $(this);
@@ -523,7 +512,7 @@ $(function(){
 
 
   /*----------TABLE----------*/
-    if($('table').length > 0 || $('.notes-content').length > 0){
+    if($('table').length > 0){
       get_table(0);
     }
     
@@ -541,64 +530,11 @@ $(function(){
       if($('table').length > 0){
         var file = $('table').eq(i).attr('class');
         if($('table').eq(i).attr('page') != undefined){
-          if(file == 'cash_flow' || file == 'financial_dashboard'){
-            var post = { pg: $('table').eq(i).attr('page'),
-              filter_description: $('[name=filter_description]').val(),
-              first_date: $('[name=first_date]').val(),
-              last_date: $('[name=last_date]').val(),
-              filter_category: $('[name=filter_category] option:selected').val(),
-              filter_bank: $('[name=filter_bank] option:selected').val(),
-              back_date: back_date,
-              next_date: next_date
-            };
-
-            back_date = 0;
-            next_date = 0;
-
-            if($('[name=new-form-filter_cash_flow] [name=id_type_payment]').val() != undefined){ post.filter_id_type_payment = $('[name=new-form-filter_cash_flow] [name=id_type_payment]').val(); }
-
-            if($('[name=new-form-filter_cash_flow] [name=category]').length > 0){
-              var el2 = $('[name=new-form-filter_cash_flow] [name=category]');
-
-              post.filter_category = '';
-              for(var j = 0; j < el2.length; j++){
-                if(el2.eq(j).is(':checked')){
-                  post.filter_category += post.filter_category == '' ? el2.eq(j).val() : ' '+el2.eq(j).val();
-                }
-              }
-            }/**/
-          }
-          else if(file == 'contacts_ucs'){
-            var post = { pg: $('table').eq(i).attr('page'),
-              filter_client: $('[name=filter_client]').val(),
-              filter_uc_number: parseInt($('[name=filter_uc_number]').val()),
-              filter_uc_class: $('[name=filter_uc_class] option:selected').val(),
-            }
-          }
-          else if(file == 'budgets'){
-            var post = { pg: $('table').eq(i).attr('page'),
-              filter_client: $('[name=filter_client]').val(),
-              filter_proposal: parseInt($('[name=filter_proposal]').val()),     
-              first_date: $('[name=first_date]').val(),
-              last_date: $('[name=last_date]').val(),
-              back_date: back_date,
-              next_date: next_date
-            }
-
-            back_date = 0;
-            next_date = 0;     
-          }
-          else{
-            var post = { pg: $('table').eq(i).attr('page') };
-            if(file == 'contacts'){
-              post.attr = $('table').eq(i).attr('type_r');
-            }
+          var post = { pg: $('table').eq(i).attr('page') };
+          if(file == 'contacts'){
+            post.attr = $('table').eq(i).attr('type_r');
           }
         }
-      }
-      else{
-        var file = 'notes';
-        var post = { pg: $('.notes-content').attr('page') };
       }
 
       if(file != undefined && file != ''){

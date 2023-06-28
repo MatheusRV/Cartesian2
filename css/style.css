@@ -2522,6 +2522,7 @@ section.home .inside .controls .buttons {
   height: 50px;
   display: flex;
   justify-content: space-around;
+  cursor: pointer;
 }
 section.home .inside .controls .buttons .reset,
 section.home .inside .controls .buttons .add-point {
