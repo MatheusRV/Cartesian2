@@ -1,4 +1,5 @@
 <?php
+  ob_start();
   include('../../config.php');
 
   $p = $_POST;
@@ -17,5 +18,6 @@
     if(Db::update('position.data', $info)){ $data['success'] = true; }
   }
 
+  ob_end_clean();
   die(json_encode($data));
 ?>

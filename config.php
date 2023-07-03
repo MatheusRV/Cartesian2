@@ -16,7 +16,7 @@
 
   
   /*----------CONSTANTS----------*/
-  define('INCLUDE_PATH','http://localhost/Projetos/Cartesian2/');
+  define('INCLUDE_PATH','http://localhost/Projetos/Cartesian/');
   define('DIR',__DIR__); /*/
   /*------------------------------*/
 
@@ -26,6 +26,15 @@
   define('USER', 'root');
   define('PASSWORD', '');
   define('DATABASE', 'cartesian');/*/
+  /*------------------------------*/
+
+  /*----------DATABASE----------*/
+  //define('BROKER_ADDRESS', getHostByName(getHostName()));
+  define('BROKER_ADDRESS', '192.168.0.122');
+  define('BROKER_PORT', 1883);
+  define('BROKER_CLIENT', 'system');
+  define('AUTHORIZATION_USERNAME', 'matheus');
+  define('AUTHORIZATION_PASSWORD', 'luma2023');
   /*------------------------------*/
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Jun-2023 às 23:50
+-- Tempo de geração: 03-Jul-2023 às 17:46
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -44,7 +44,9 @@ CREATE TABLE `points.data` (
 
 INSERT INTO `points.data` (`id`, `id_user`, `name`, `x`, `y`, `last_att`, `user_last_att`, `deleted`) VALUES
 (1, 1, 'Ponto Teste', 10, 10, '2023-06-28 18:10:33', 1, 0),
-(2, 1, 'Teste', 2, 5, '2023-06-28 18:47:58', 1, 0);
+(2, 1, 'Teste', 2, 5, '2023-06-28 18:47:58', 1, 0),
+(3, 1, 'Oi', 50, 50, '2023-06-28 19:13:08', 1, 0),
+(4, 1, 'A', 50, 50, '2023-06-28 19:16:34', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,7 @@ CREATE TABLE `position.data` (
 --
 
 INSERT INTO `position.data` (`id`, `id_user`, `x`, `y`, `data`, `deleted`) VALUES
-(1, 1, 0, 0, '2023-06-28 18:49:54', 0);
+(1, 1, 100, 100, '2023-07-03 01:38:10', 0);
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,7 @@ CREATE TABLE `system.logged` (
 --
 
 INSERT INTO `system.logged` (`id`, `token`, `user`, `password`, `last_action`, `remember`) VALUES
-(4, '649c98848864f', 'admin', '$2y$09$FEnn3tEv.ATZT.s5Sks7juwFWgP0DruBOfXZ/Iu3lLf6vRiKEW8Rq', '2023-06-28 18:49:54', 0);
+(1, '64a251657f389', 'admin.indusol', '$2y$09$FEnn3tEv.ATZT.s5Sks7juwFWgP0DruBOfXZ/Iu3lLf6vRiKEW8Rq', '2023-07-03 01:45:21', 0);
 
 -- --------------------------------------------------------
 
@@ -113,7 +115,7 @@ CREATE TABLE `system.users` (
 --
 
 INSERT INTO `system.users` (`id`, `user`, `password`, `name`, `office`, `permission`, `last_att`, `user_last_att`, `deleted`) VALUES
-(1, 'admin', '$2y$09$FEnn3tEv.ATZT.s5Sks7juwFWgP0DruBOfXZ/Iu3lLf6vRiKEW8Rq', 'Admin Cartesian', 0, '1||1||1', '2023-06-26 13:58:29', 1, 0),
+(1, 'admin.indusol', '$2y$09$FEnn3tEv.ATZT.s5Sks7juwFWgP0DruBOfXZ/Iu3lLf6vRiKEW8Rq', 'Admin Cartesian', 0, '1||1||1', '2023-06-26 13:58:29', 1, 0),
 (11, 'matheus', '$2y$09$pG7QGcCbaAhyehvKqDrll..uJZQIum2kV4lXgBbxwJy/f4NoBTDxW', 'Matheus', 10, '1||0||0', '2023-06-28 18:24:00', 1, 0);
 
 --
@@ -152,7 +154,7 @@ ALTER TABLE `system.users`
 -- AUTO_INCREMENT de tabela `points.data`
 --
 ALTER TABLE `points.data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `position.data`
@@ -164,7 +166,7 @@ ALTER TABLE `position.data`
 -- AUTO_INCREMENT de tabela `system.logged`
 --
 ALTER TABLE `system.logged`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `system.users`

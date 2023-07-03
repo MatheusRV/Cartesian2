@@ -47,21 +47,73 @@ $(function(){
       }
     }
 
-    function subscribe(topic){
-      var post = {topic: 'cartesian/'+topic};
+    var brokerStatus = false; var brokerChecked = false;
+
+    function brokerIsConnected(){
+      $.ajax({
+        beforeSend:function(){ brokerChecked = false; },
+        url: 'ajax/mqtt/check_connection.php',
+        type: 'GET',
+        dataType: 'json',
+      }).done(function(data){
+        if(data.success){
+          if(!brokerStatus){
+            $('section.home').removeClass('disabled');
+            $('.map #point').draggable('enable');
+            $('article.broker-disconnected').fadeOut(100);
+            $('article.broker-connected').fadeIn(500).fadeOut(500);
+            brokerStatus = true;
+          }
+        }
+        else if(brokerStatus && (!data.success || data == undefined || !data.isArray())){
+          $('.map #point').draggable('disable');
+          $('section.home').addClass('disabled');
+          $('article.broker-disconnected').fadeIn(300);
+          brokerStatus = false;
+        }
+        brokerChecked = true;
+        return data.success;
+      }).fail(function(data){
+        $('.map #point').draggable('disable');
+        $('section.home').addClass('disabled');
+        $('article.broker-disconnected').fadeIn(300);
+        brokerStatus = false;
+        brokerChecked = true;
+      });
+      return false;
+    }
+
+    function subscribe(topic, qos = 2){
       $.ajax({
         beforeSend:function(){ $('body').css('cursor', 'wait');},
         url: 'ajax/mqtt/subscribe.php',
         type: 'POST',
         dataType: 'json',
-        data: post
+        data: {topic: topic, qos: qos}
       }).done(function(data){
         $('body').css('cursor', 'initial');
+        if(data.success){
+          if(data.topic != false && data.message != false){
+            if(data.topic == "x"){ setPosition(data.message, lastPosition.y); }
+            else if(data.topic == "y"){ setPosition(lastPosition.x, data.message); }
+            else if(data.topic == "bt/left" || data.topic == "bt/up" || data.topic == "bt/down" || data.topic == "bt/right"){
+              var axis = "";
+              var qtd = $('.controls .velocity .vel.active').text();
+              if(data.topic == 'bt/left' || data.topic == 'bt/down') qtd = -qtd;
+              
+              if(data.topic == 'bt/left' || data.topic == 'bt/right'){ axis = 'x'; }
+              else if(data.topic == 'bt/up' || data.topic == 'bt/down'){ axis = 'y'; }
+              else return false;
+              move(axis, qtd);
+            }
+            else return false;
+          }
+        }
       });/**/
     }
 
-    function publish(topic, message){
-      var post = {topic: topic, message: message};
+    function publish(topic, message, qos = 2){
+      var post = {topic: topic, message: message, qos: qos};
       $.ajax({
         beforeSend:function(){ $('body').css('cursor', 'wait');},
         url: 'ajax/mqtt/publish.php',
@@ -71,7 +123,7 @@ $(function(){
       }).done(function(data){
         $('body').css('cursor', 'initial');
 
-        if(data.success && data.qtd != undefined){ 
+        if(data.success){ 
           
         }
         else{
@@ -81,20 +133,26 @@ $(function(){
     }
 
     function att(){
-      var {x, y} = getPosition();
-      var post = {x: x, y: y};
-      $.ajax({
-        beforeSend:function(){ $('body').css('cursor', 'wait');},
-        url: 'ajax/submit/position.php',
-        type: 'POST',
-        dataType: 'json',
-        data: post
-      }).done(function(data){
-        $('body').css('cursor', 'initial');
-      });/**/
+      if(brokerStatus){
+        var {x, y} = getPosition();
+        var post = {x: x, y: y};
+        $.ajax({
+          beforeSend:function(){ $('article.message-load').fadeIn(100); $('body').css('cursor', 'wait'); },
+          url: 'ajax/submit/position.php',
+          type: 'POST',
+          dataType: 'json',
+          data: post
+        }).done(function(data){
+          $('article.message-load').fadeOut(100);
+          $('body').css('cursor', 'initial');
+        });/**/
 
-      if(x != lastPosition.x){ publish('x', x); delay(100); }
-      if(y != lastPosition.y){ publish('y', y); }
+        if(x != lastPosition.x){ publish('x', x); delay(100); }
+        if(y != lastPosition.y){ publish('y', y); }
+      }
+      else{
+        setPosition(lastPosition.x, lastPosition.y);
+      }
     }
   /*------------------------------------------*/
 
@@ -103,65 +161,80 @@ $(function(){
     $('body').on('mousedown', '.controls .commands .bt:not(#empty)', function(e){
       e.stopPropagation();
       var el = $(this);
-      var action = el.attr('id');
-      var qtd = el.closest('.controls').find('.velocity .vel.active').text();
-      var topic = '';
       
-      if(action == 'left' || action == 'down') qtd = -qtd;
-      
-      if(action == 'left' || action == 'right'){ topic = 'x'; }
-      else if(action == 'up' || action == 'down'){ topic = 'y'; }
-      else return false;
+      if(!el.closest('section').hasClass('disabled')){
+        var action = el.attr('id');
+        var qtd = el.closest('.controls').find('.velocity .vel.active').text();
+        var topic = '';
+        if(action == 'left' || action == 'down') qtd = -qtd;
+        
+        if(action == 'left' || action == 'right'){ topic = 'x'; }
+        else if(action == 'up' || action == 'down'){ topic = 'y'; }
+        else return false;
 
-      move(topic, qtd);
+        move(topic, qtd);
+      }
     });
 
+    var intervalBt;
     $('body').on('click', '.controls .buttons .toggle', function(e){
-      $(this).toggleClass('active');
-      publish('joystick', $(this).hasClass('active'));
+      var el = $(this);
+      
+      if(!el.closest('section').hasClass('disabled')){
+        el.toggleClass('active');
+        if(el.hasClass('active')){ intervalBt = setInterval(function(){ subscribe('bt/#', 0); }, 1000); publish('joystick', 1, 2); }
+        else{ clearInterval(intervalBt); publish('joystick', 0, 2); }
+      }
     });
 
     $('body').on('click', '.controls .buttons .reset', function(e){
-      setPosition(0,0);
+      e.stopPropagation();
+      var el = $(this);
+      if(!el.closest('section').hasClass('disabled')){ setPosition(0,0); }
     });
 
     $('body').on('click', '.controls .buttons .add-point', function(e){
       e.stopPropagation();
       var el = $(this);
-      var post = getPosition();
-      post.forward = 1;
+      
+      if(!el.closest('section').hasClass('disabled')){
+        var post = getPosition();
+        post.forward = 1;
 
-      $.ajax({
-        beforeSend:function(){ $('article.message-load').fadeIn(100); $('body').css('cursor', 'wait');},
-        url: 'ajax/form/new/points.php',
-        type: 'POST',
-        dataType: 'json',
-        data: post
-      }).done(function(data){
-        $('article.message-load').fadeOut(100); 
-        $('body').css('cursor', 'initial');
+        $.ajax({
+          beforeSend:function(){ $('article.message-load').fadeIn(100); $('body').css('cursor', 'wait');},
+          url: 'ajax/form/new/points.php',
+          type: 'POST',
+          dataType: 'json',
+          data: post
+        }).done(function(data){
+          $('article.message-load').fadeOut(100); 
+          $('body').css('cursor', 'initial');
 
-        if(data.success){
-          $('section.form').append(data.result);
+          if(data.success){
+            $('section.form').append(data.result);
 
-          $('.'+data.form).fadeIn(300);
-        }
-        else if(data.reload){
-          location.reload();
-        }
-        else{
-          console.log('Error');
-        }
-      });/**/
+            $('.'+data.form).fadeIn(300);
+          }
+          else if(data.reload){
+            location.reload();
+          }
+          else{
+            console.log('Error');
+          }
+        });/**/
+      }
     });
     $('body').on('click', '.controls .velocity .vel', function(e){
       var el = $(this);
-      if(el.hasClass('active')){ el.toggleClass('active'); }
-      else{
-        el.parent().find('.vel').each(function(index){
-          $(this).removeClass('active');
-        })
-        el.addClass('active');
+      if(!el.closest('section').hasClass('disabled')){
+        if(el.hasClass('active')){ el.toggleClass('active'); }
+        else{
+          el.parent().find('.vel').each(function(index){
+            $(this).removeClass('active');
+          })
+          el.addClass('active');
+        }
       }
     });
 
@@ -194,7 +267,7 @@ $(function(){
         });
 
         $(document).on('keydown', function(e){
-          if($('section.home').length == 1 && $('aside:visible').length == 0){
+          if($('section.home').length == 1 && $('aside:visible').length == 0 && !$('section.home').hasClass('disabled')){
             if(e.keyCode == 37 || e.keyCode == 65){ move('x', -($('.controls .velocity .vel.active').text())); } //arrow left
             else if(e.keyCode == 38 || e.keyCode == 87){ move('y', ($('.controls .velocity .vel.active').text())); } //arrow up
             else if(e.keyCode == 39 || e.keyCode == 68){ move('x', ($('.controls .velocity .vel.active').text())); } //arrow right
@@ -219,8 +292,10 @@ $(function(){
           }
         })
 
+        brokerIsConnected();
 
-        //subscribe('x');
+        window.setInterval(function(){ if(brokerChecked){ brokerIsConnected(); } }, 5000);
+        window.setInterval(function(){ if(brokerStatus){subscribe("x", 1); subscribe("y", 1); } }, 7500);
       }
     });
   /*------------------------------------------*/

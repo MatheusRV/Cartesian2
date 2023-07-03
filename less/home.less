@@ -1,5 +1,10 @@
 /*----------SECTION.HOME----------*/
   section.home{
+    transition: 0.2s;
+    &.disabled{
+      filter: blur(1px);
+      & ~ section{ filter: blur(1px); }
+    }
     .inside{
       h1{
         display: inline-block;
@@ -128,9 +133,10 @@
         }
 
         .velocity{
-          width: 60%;
+          padding-left: 15px;
+          width: 100%;
           display: flex;
-          justify-content: space-between;
+          justify-content: space-around;
           .vel{
             display: flex;
             flex-direction: column;

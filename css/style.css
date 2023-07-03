@@ -906,7 +906,9 @@ section.outside.midle .inside {
   padding: 0 5px;
 }
 article.message-success,
-article.message-load {
+article.message-load,
+article.broker-disconnected,
+article.broker-connected {
   width: auto;
   padding: 10px;
   position: fixed;
@@ -915,19 +917,45 @@ article.message-load {
   transform: translateX(-50%);
   z-index: 1023;
   display: none;
+  justify-content: center;
   border-radius: 20px;
   background: #58d656;
 }
 article.message-success p,
-article.message-load p {
+article.message-load p,
+article.broker-disconnected p,
+article.broker-connected p {
   text-align: center;
   text-transform: uppercase;
   font-size: 18px;
-  color: white;
+  color: #fff;
+}
+article.message-success img,
+article.message-load img,
+article.broker-disconnected img,
+article.broker-connected img {
+  filter: invert(95%) sepia(73%) saturate(27%) hue-rotate(71deg) brightness(105%) contrast(100%);
+  color: #fff;
+  height: 20px;
+  aspect-ratio: 1;
+}
+article.message-success i,
+article.message-load i,
+article.broker-disconnected i,
+article.broker-connected i {
+  color: #fff;
 }
 article.message-load {
   font-style: italic;
   background: #21396e;
+}
+article.broker-disconnected {
+  font-weight: bold;
+  background: #e74c3c;
+}
+article.broker-connected {
+  font-weight: bold;
+  background: #58d656;
 }
 /*------------------------------*/
 /*----------WIDTH TEMPLATE----------*/
@@ -2468,6 +2496,15 @@ form.new-file label {
 }
 /*------------------------------*/
 /*----------SECTION.HOME----------*/
+section.home {
+  transition: 0.2s;
+}
+section.home.disabled {
+  filter: blur(1px);
+}
+section.home.disabled ~ section {
+  filter: blur(1px);
+}
 section.home .inside {
   display: flex;
 }
@@ -2582,9 +2619,10 @@ section.home .inside .controls .buttons .toggle.active span:after {
   left: 6px;
 }
 section.home .inside .controls .velocity {
-  width: 60%;
+  padding-left: 15px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 section.home .inside .controls .velocity .vel {
   display: flex;

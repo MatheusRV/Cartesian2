@@ -1,4 +1,5 @@
 <?php
+	ob_start();
 	include('../../config.php');
 	require DIR.'/composer/vendor/autoload.php';
 
@@ -26,9 +27,18 @@
         ->setPassword(AUTHORIZATION_PASSWORD);
 
 	$mqtt = new \PhpMqtt\Client\MqttClient($server, $port, $clientId);
-	$mqtt->connect($connectionSettings, true);
-	$mqtt->publish('cartesian/'.$p['topic'], $p['message'], 0);
-	$mqtt->disconnect();
+	try{
+		$mqtt->connect($connectionSettings, true);
 
+		if($mqtt->isConnected()){
+			$mqtt->publish('cartesian/esp/'.$p['topic'], $p['message'], 1, $p['qos']);
+			$mqtt->publish('cartesian/web/'.$p['topic'], $p['message'], 1, $p['qos']);
+			$mqtt->disconnect();
+			$data['success'] = true;
+		}
+	}
+	catch(MqttClientException $e){ $data['success'] = false; }
+
+	ob_end_clean();
 	die(json_encode($data));
 ?>

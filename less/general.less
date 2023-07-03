@@ -748,35 +748,60 @@
     padding: 0 5px;
   }
 
-  article.message-success, article.message-load{
-    width: auto;
-    padding: 10px;
+  article{
+    &.message-success, &.message-load, &.broker-disconnected, &.broker-connected{
+      width: auto;
+      padding: 10px;
 
-    position: fixed;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1023;
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1023;
 
-    display: none;
+      display: none;
+      justify-content: center;
 
-    border-radius: 20px;
+      border-radius: 20px;
 
-    background: #58d656;
+      background: #58d656;
 
-    p{
-      text-align: center;
-      text-transform: uppercase;
-      font-size: 18px;
-      
-      color: white;
+      p{
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 18px;
+        
+        color: #fff;
+      }
+
+      img{
+        filter: invert(95%) sepia(73%) saturate(27%) hue-rotate(71deg) brightness(105%) contrast(100%);
+        color: #fff;
+        height: 20px;
+        aspect-ratio: 1;
+      }
+
+      i{
+        color: #fff;
+      }
     }
-  }
+    
+    &.message-load{
+      font-style: italic;
 
-  article.message-load{
-    font-style: italic;
+      background: @color19;
+    }
 
-    background: @color19;
+    &.broker-disconnected{
+      font-weight: bold;
+      background: @secondary-color;
+    }
+
+    &.broker-connected{
+      font-weight: bold;
+      background: #58d656;
+    }
+
   }
 /*------------------------------*/
 

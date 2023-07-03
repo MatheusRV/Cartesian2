@@ -20,7 +20,15 @@
 ?>
 
 <article class="message-load">
-  <p>Carregando...</p>
+  <p>Atualizando...</p>
+</article><!--message-load-->
+
+<article class="broker-disconnected">
+  <p><img src="file/svg/circle-exclamation-solid.svg"> Não foi possível estabelecer uma conexão com o broker!</p>
+</article><!--message-load-->
+
+<article class="broker-connected">
+  <p><img src="file/svg/circle-check-solid.svg"> Broker conectado!</p>
 </article><!--message-load-->
 
 <section class="form"></section>
@@ -58,15 +66,5 @@
         <span class="bt" id="right"><i class="fa fa-arrow-right"></i></span>
       </div>
     </div>
-
-    <script src="https://cdn.tiny.cloud/1/zpjiw4hoos1kl80km8nw1gvz415gzk86b8wv7tpjjeviclgq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <script>
-      tinymce.init({
-        selector: '.text-edit',
-        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-        toolbar_mode: 'floating',
-      });
-    </script>
   </div><!--inside-->
 </section><!--outside-->

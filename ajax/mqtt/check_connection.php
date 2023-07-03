@@ -1,22 +1,15 @@
 <?php
 	ob_start();
-	include('../../config.php');
+	require_once('../../config.php');
 	require DIR.'/composer/vendor/autoload.php';
 
 	use PhpMqtt\Client\ConnectionSettings;
 	use PhpMqtt\Client\Exceptions\MqttClientException;
 	use PhpMqtt\Client\MqttClient;
-	use Psr\Log\LogLevel;
-
-	// Create an instance of a PSR-3 compliant logger. For this example, we will also use the logger to log exceptions.
 
 	$p = $_POST;
-
 	$data = array();
 	$data['success'] = false;
-	$data['topic'] = "";
-	$data['message'] = "";
-	$data['retained'] = "";
 	$permission = User::getPermission('cartesian');
 
   if(!isset($_SESSION['verify_authentication_cartesian_key']) || !password_verify('cartesian_'.date('Y-m-d').'_login', $_SESSION['verify_authentication_cartesian_key'])){
@@ -33,24 +26,14 @@
         ->setUsername(AUTHORIZATION_USERNAME)
         ->setPassword(AUTHORIZATION_PASSWORD);
 
-  $msg = new Message();
-
 	$mqtt = new \PhpMqtt\Client\MqttClient($server, $port, $clientId);
 	try{
 		$mqtt->connect($connectionSettings, true);
 		if($mqtt->isConnected()){
-			$mqtt->subscribe('cartesian/web/'.$p['topic'], function (string $topic, string $message, bool $retained, $matchedWildcards) use ($mqtt, $msg){
-				$msg->setMessage($topic, $message, $retained);
-				$mqtt->interrupt();
-			}, $p['qos']);
 			$data['success'] = true;
-			$mqtt->loop();
-			$mqtt->unsubscribe('cartesian/web/'.$p['topic']);
 			$mqtt->disconnect();
-			$data['topic'] = substr($msg->getTopic(), 14);
-			$data['message'] = $msg->getMessage();
-			$data['retained'] = $msg->getRetain();
 		}
+		else{ $data['success'] = false; }
 	}
 	catch(MqttClientException $e){ $data['success'] = false; }
 
